@@ -1,768 +1,1 @@
-# Git Handson
-
-## ºÇ½é¤Ë
-
-Git ¤Ë´Ø¤¹¤ë´ğËÜÅª¤ÊÁàºîÊıË¡¤ò Hands-on ·Á¼°¤Ç³Ø¤ó¤Ç¤¤¤­¤Ş¤·¤ç¤¦¡£°Ê¹ß¤ÇÎóµó¤µ¤ì¤Æ¤¤¤ë½çÈÖÄÌ¤ê¤ËÁàºî¤ò¤·¤Ê¤¬¤éÁàºî¤ÎÊıË¡¤ò¿È¤ËÉÕ¤±¤Æ¤¤¤­¤Ş¤·¤ç¤¦¡£
-
-## »öÁ°³ÎÇ§
-
-Àµ¤·¤¯´Ä¶­ÀßÄê¤¬¤Ç¤­¤Æ¤¤¤ë¤«¤É¤¦¤«¤ò³ÎÇ§¤·¤Æ¤ª¤¤¤Æ²¼¤µ¤¤¡£¥³¥Ş¥ó¥É¤Ï git config -l ¤Ç¤¹¡£
-
-    $  git config -l
-    user.name=YAMANE Toshiaki
-    user.email=yamanetoshi@gmail.com
-
-ºÇÄã¸Â¡¢¾åµ­ÆóÅÀ¤Ï³ÎÇ§¤µ¤ì¤Æ¤¤¤ë¤³¤È¡¢¤¬Á°Äó¤È¤Ê¤ê¤Ş¤¹¡£Ì¤ÀßÄê¤Î¾ì¹ç¤Ë¤Ï°Ê²¼¤ÎÊıË¡¤ÇÅĞÏ¿¤ò¤·¤Æ¤ª¤¤¤Æ²¼¤µ¤¤¡£
-
-    $ git config --global --add user.name <¤¢¤Ê¤¿¤ÎÌ¾Á° (ascii ¤Ç)>
-    $ git config --global --add user.email <¤¢¤Ê¤¿¤Î email address>
-
-## ¥ê¥İ¥¸¥È¥ê¤Î½é´ü²½
-
-¤Ş¤º¥ê¥İ¥¸¥È¥ê¤Î½é´ü²½¤¬É¬Í×¤Ç¤¹¡£ºî¶ÈÍÑ¤Î¥Ç¥£¥ì¥¯¥È¥ê¤ò·¡¤ê¡¢¥ê¥İ¥¸¥È¥ê¤Î½é´ü²½¤ò¹Ô¤Ê¤¤¤Ş¤¹¡£
-
-    $ mkdir git-tutorial
-    $ cd git-tutorial
-    $ git init
-    Initialized empty Git repository in /Users/rms/tmp/git-tutorial/.git/
-
-¤³¤³¤ÇºîÀ®¤µ¤ì¤¿ .git ¤È¤¤¤¦¥Ç¥£¥ì¥¯¥È¥ê¤ò¥ê¥İ¥¸¥È¥ê¤È¸Æ¤Ó¤Ş¤¹¡£¤³¤³¤«¤éÎò»Ë¤òÁÌ¤Ã¤Æ°ÊÁ°¤Î¥Õ¥¡¥¤¥ë¤Î¾õÂÖ¤ò¼è¤ê½Ğ¤¹¤³¤È¤Ê¤É¤¬¤Ç¤­¤Ş¤¹¡£
-
-## ÍÑ¸ì¤ÎÄêµÁ
-
-### ¥ê¥İ¥¸¥È¥ê
-
-Git ¤Ç´ÉÍı¤¹¤ë¥Ç¥£¥ì¥¯¥È¥ê (¥ï¡¼¥¯¥Ä¥ê¡¼¤È¸Æ¤Ó¤Ş¤¹) ¤ÎºÇ¾å°Ì¤Î¥Ç¥£¥ì¥¯¥È¥ê¤ËÂ¸ºß¤¹¤ë .git ¤È¤¤¤¦¥Ç¥£¥ì¥¯¥È¥ê¤ò¥ê¥İ¥¸¥È¥ê¤È¸Æ¤Ó¤Ş¤¹¡£¤½¤Î¥ê¥İ¥¸¥È¥ê¤Ë¥Ö¥é¥ó¥Á¤ä¤½¤ìËè¤ËÂ¸ºß¤·¤Æ¤¤¤ëÎò»Ë (ÊÑ¹¹ÍúÎò) ¤¬µ­Ï¿¤µ¤ì¤Æ¤¤¤Ş¤¹¡£
-
-### ¥ï¡¼¥¯¥Ä¥ê¡¼
-
-Git ¤Ç´ÉÍı¤µ¤ì¤Æ¤¤¤ë¾ğÊó¤Ï¤½¤ìÀìÍÑ¤Î¥ª¥Ö¥¸¥§¥¯¥È¤È¤·¤ÆÊİ»ı¤µ¤ì¤Æ¤¤¤Ş¤¹¤¬¡¢¤³¤ì¤À¤±¤Ç¤Ï²æ¡¹¤¬±ÜÍ÷¤·¤¿¤êÊÑ¹¹¤·¤¿¤ê¡¢¤È¤¤¤¦ÌÜÅª¤ÇÍøÍÑ¤¹¤ë¤³¤È¤Ï¤Ç¤­¤Ş¤»¤ó¡£
-µ­Ï¿¤µ¤ì¤Æ¤¤¤ëÆâÍÆ¤ò¥Õ¥¡¥¤¥ë¥·¥¹¥Æ¥à¾å¤Ë¥Ç¥£¥ì¥¯¥È¥ê¹½Â¤¤È¤·¤ÆÅ¸³«¤¹¤ë»ö¤Ç²æ¡¹¥æ¡¼¥¶¤¬ÄÌ¾ï¤ÎÌÜÅª¤Ë»È¤¨¤ë¾õÂÖ¤Ë¤Ê¤ê¤Ş¤¹¡£¤³¤ÎÎÎ°è¤ò¡Ö¥ï¡¼¥¯¥Ä¥ê¡¼¡×¤¢¤ë¤¤¤Ï¡Ö¥ï¡¼¥­¥ó¥°¥Ä¥ê¡¼¡×¤È¸Æ¤Ó¡¢¥ê¥İ¥¸¥È¥ê¤Ëµ­Ï¿¤µ¤ì¤Æ¤¤¤ëÆâÍÆ¤ò¥ï¡¼¥¯¥Ä¥ê¡¼¤ËÅ¸³«¡¦È¿±Ç¤¹¤ë¹Ô°Ù¤ò¡Ö¥Á¥§¥Ã¥¯¥¢¥¦¥È (checkout) ¤¹¤ë¡×¤È¸À¤¤¤Ş¤¹¡£
-
-°Ê²¼¤Ë Git ¤Ë¤ª¤±¤ëÈÇ´ÉÍı¤Î¥Õ¥í¡¼¤ò¡ÖÆşÌç Git (ßÀÌî½ã)¡×¤è¤ê°úÍÑ¤·¤Ş¤¹¡£
-
->> git ¤Ç¤ÎÈÇ´ÉÍı¤Ï
->>
->> - 1¤Ä¤Î¥ê¥Ó¥¸¥ç¥ó¤ÎÆâÍÆ¤ò¥ï¡¼¥¯¥Ä¥ê¡¼¤Ë¥Á¥§¥Ã¥¯¥¢¥¦¥È¤·
->> - ¥ï¡¼¥¯¥Ä¥ê¡¼¾å¤Î¥Õ¥¡¥¤¥ë¤ËÊÑ¹¹¤ò²Ã¤¨
->> - ÊÑ¹¹¸å¤Î¥ï¡¼¥¯¥Ä¥ê¡¼¾å¤ÎÆâÍÆ¤ò¸µ¤Ë¿·¤·¤¤¥ê¥Ó¥¸¥ç¥ó¤òºîÀ®¤·¡¢¥Ö¥é¥ó¥Á¤¬»Ø¤·¼¨¤¹¥³¥ß¥Ã¥È¤ò¿Ê¤á¤ë
->> ¤È¤¤¤¦Î®¤ì¤Ç¿Ê¤á¤é¤ì¤ë¤³¤È¤Ë¤Ê¤ê¤Ş¤¹¡£
-
-### ¥¤¥ó¥Ç¥¯¥¹
-
-¥ê¥İ¥¸¥È¥ê¤È¥ï¡¼¥¯¥Ä¥ê¡¼¤È¤Î´Ö¤Ë°ÌÃÖ¤·¡¢¼¡¤Ë commit ¤¹¤ëÆâÍÆ¤òÃà¼¡Åª¤Ëºî¤ê¾å¤²¤Æ¤¤¤¯¤¿¤á¤Î¥Ğ¥Ã¥Õ¥¡¡¢¤ÈßÀÌî½ã¤µ¤ó¤ÏÉ½¸½¤Ê¤µ¤Ã¤Æ¤¤¤Ş¤¹¡£
-¤³¤³¤ËÅĞÏ¿¤µ¤ì¤¿¾ğÊó¤Î¤ß¤¬ commit ¤È¤·¤ÆÅĞÏ¿¤µ¤ì¤ëÆâÍÆ¤Ë¤Ê¤ê¤Ş¤¹¡£¤³¤³¤ËÅĞÏ¿¤µ¤ì¤ë¾ğÊó¤ÎÃ±°Ì¤Ï¥Õ¥¡¥¤¥ë¤Ç¤Ï¤Ê¤¯ÊÑ¹¹¤Îº¹Ê¬¤Ç¤¢¤ë¡¢¤È¤¤¤¦»ö¤ò³Ğ¤¨¤Æ¤ª¤¤¤Æ²¼¤µ¤¤¡£
-
-## ¥ê¥İ¥¸¥È¥ê¤Î¾õÂÖ
-
-¾õÂÖ¤ò³ÎÇ§¤¹¤ë¤¿¤á¤Î¥³¥Ş¥ó¥É¤È¤·¤Æ git status ¤È¤¤¤¦¥³¥Ş¥ó¥É¤¬¤¢¤ê¤Ş¤¹¡£¥ê¥İ¥¸¥È¥ê¤òºîÀ®¤·¤¿¤Ğ¤«¤ê¤Ç¤¢¤ì¤Ğ°Ê²¼¤Î¤è¤¦¤Ê½ĞÎÏ¤È¤Ê¤ë¤Ï¤º¤Ç¤¹¡£
-
-    $ git status
-    # On branch master
-    #
-    # Initial commit
-    #
-    nothing to commit (create/copy files and use "git add" to track)
-
-¤³¤³¤Ç¤Ï¤Ş¤À²¿¤ÎÁàºî¤â¹Ô¤Ê¤Ã¤Æ¤¤¤Ê¤¤¤¿¤á½é´ü¾õÂÖ¤Ç¤¹¡¢¤È¤¤¤¦°ÕÌ£¤Î½ĞÎÏ¤Ë¤Ê¤Ã¤Æ¤¤¤ë¤³¤È¤¬Ê¬¤«¤ê¤Ş¤¹¡£¤Ş¤À commit ¤òºî¤Ã¤Æ¤â¤¤¤Ê¤¤¤Ç¤¹¤·¡¢commit ¤µ¤ì¤ë¤Ù¤­¥Õ¥¡¥¤¥ë¤â¸«Åö¤¿¤ê¤Ş¤»¤ó¤Î¤Ç¤³¤ì¤ÏÅöÁ³¤È¸À¤¨¤Ş¤¹¡£
-
-½ô¡¹¤ÎÁàºî¤Ë¤è¤Ã¤Æ¥ê¥İ¥¸¥È¥ê¤Î¾õÂÖ¤ÏÊÑ²½¤·¤Ş¤¹¡£¤½¤Î¾õÂÖ¤ò¤³¤Î¥³¥Ş¥ó¥É¤Ç³ÎÇ§¤¹¤ë¤³¤È¤¬¤Ç¤­¤ë¤Î¤Ç¡¢º£¸å¤Ï¤³¤ì¤ò¤è¤¯»È¤Ã¤Æ¤¤¤¯¤³¤È¤Ë¤Ê¤ë¤Ç¤·¤ç¤¦¡£
-
-## ¥¤¥ó¥Ç¥Ã¥¯¥¹¤Ø¤ÎÅĞÏ¿
-
-¤½¤ì¤Ç¤Ï¤³¤Î¥ê¥İ¥¸¥È¥ê¤Î´ÉÍıÂĞ¾İ¤È¤Ê¤ë¥Õ¥¡¥¤¥ë¤òºîÀ®¤·¤Ş¤¹¡£¥Õ¥¡¥¤¥ëÌ¾¤Ï README.md ¤È¤·¤Ş¤¹¡£touch ¤Ç¥Õ¥¡¥¤¥ë¤òºîÀ®¤·¤¿¤é¥ê¥İ¥¸¥È¥ê¤Î¾õÂÖ¤ò³ÎÇ§¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£
-
-    $ touch README.md
-    $ git status
-    # On branch master
-    #
-    # Initial commit
-    #
-    # Untracked files:
-    #   (use "git add <file>..." to include in what will be committed)
-    #
-    #       README.md
-    nothing added to commit but untracked files present (use "git add" to track)
-
-¤Ş¤À commit ¤ÏºîÀ®¤·¤Æ¤¤¤Ş¤»¤ó¡£¤½¤·¤Æ Untracked files ¤È¤·¤Æº£ºîÀ®¤·¤¿¥Õ¥¡¥¤¥ë¤¬Îóµó¤·¤Æ¤¢¤ë¤³¤È¤¬Ê¬¤«¤ê¤Ş¤¹¡£
-¤Ç¤Ï¤³¤Î README.md ¤ò¥¹¥Æ¡¼¥¸¥ó¥°ÎÎ°è¤È¸Æ¤Ğ¤ì¤ë¥¤¥ó¥Ç¥¯¥¹¤Ø¤ÎÅĞÏ¿¤ò¹Ô¤Ê¤¤¤Ş¤¹¡£
-
-    $ git add README.md
-    $ git status
-    # On branch master
-    #
-    # Initial commit
-    #
-    # Changes to be committed:
-    #   (use "git rm --cached <file>..." to unstage)
-    #
-    #       new file:   README.md
-    #
-
-README.md ¤ò git add ¥³¥Ş¥ó¥É¤Ç¥¤¥ó¥Ç¥¯¥¹¤ËÅĞÏ¿ (¥¹¥Æ¡¼¥¸¥ó¥°) ¤·¤¿¤³¤È¤Ë¤è¤ê¡¢¾õÂÖ¤¬ÊÑ¤ï¤Ã¤Æ¤¤¤ë¤³¤È¤¬Ê¬¤«¤ê¤Ş¤¹¡£Changes to be committed ¤È¤·¤ÆÎóµó¤µ¤ì¤ë·Á¤Ë¤Ê¤ê¤Ş¤·¤¿¡£¥¤¥ó¥Ç¥¯¥¹¤ËÅĞÏ¿¤µ¤ì¤¿¤³¤È¤Ë¤è¤ê¡¢commit ¤Ç¥ê¥İ¥¸¥È¥ê¤ËÅĞÏ¿¤¹¤ëÂĞ¾İ¤È¤µ¤ì¤¿Ìõ¤Ç¤¹¡£
-
-## Îò»Ë¤Îµ­Ï¿
-
-¥¤¥ó¥Ç¥¯¥¹¤ËÅĞÏ¿ (¥¹¥Æ¡¼¥¸¥ó¥°) ¤µ¤ì¤¿¥Õ¥¡¥¤¥ë (Ã£) ¤ò¼Âºİ¤Ë¥ê¥İ¥¸¥È¥ê¤ÎÎò»Ë¤È¤·¤Æµ­Ï¿¤¹¤ë¤¿¤á¤Î¥³¥Ş¥ó¥É¤È¤·¤Æ git commit ¤È¤¤¤¦¥³¥Ş¥ó¥É¤¬ÍÑ°Õ¤µ¤ì¤Æ¤¤¤Ş¤¹¡£
-¼Â¹Ô¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£
-
-    $ git commit -m 'Initial commit'
-    [master (root-commit) bb4da8e] Initial commit
-     0 files changed
-     create mode 100644 README.md
-
-git commit ¤Ë»ØÄê¤·¤Æ¤¤¤ë -m ¤È¤¤¤¦¥ª¥×¥·¥ç¥ó¤Ï commit log ¤ò¥³¥Ş¥ó¥É¤Ç»ØÄê¤¹¤ë¤¿¤á¤Î¤â¤Î¤Ç¤¹¡£¤³¤Î Tutorial ¤Ç¤Ï´Ê°×¤Ê commit log ¤òÎò»Ë¤Ëµ­Ï¿¤¹¤ë·Á¤ò¼è¤Ã¤Æ¤¤¤Ş¤¹¤¬¡¢¼Âºİ¤Ë»È¤Ã¤Æ¤¤¤¯¾ì¹ç¤Ë¤Ï¤³¤ì¤¬Èó¾ï¤ËÂçÀÚ¤Ê¾ğÊó¤Ë¤Ê¤ê¤Ş¤¹¤Î¤Ç¡¢¿§¡¹¤ÊºîË¡¤Ë½¾¤Ã¤Æµ­Ï¿¤ò¤¹¤ë¤è¤¦¤Ë¤·¤¿Êı¤¬ÎÉ¤¤¤Ç¤·¤ç¤¦¡£
-
-¤Á¤Ê¤ß¤Ë -m ¥ª¥×¥·¥ç¥ó¤ò¾ÊÎ¬¤¹¤ë¤È¥Ç¥Õ¥©¥ë¥È¤Ç¤Ï vi ¤¬µ¯Æ°¤·¡¢°Ê²¼¤ÊÉ½¼¨¤Ë¤Ê¤ê¤Ş¤¹¡£
-
-
-    # Please enter the commit message for your changes. Lines starting
-    # with '#' will be ignored, and an empty message aborts the commit.
-    # On branch master
-    #
-    # Initial commit
-    #
-    # Changes to be committed:
-    #   (use "git rm --cached <file>..." to unstage)
-    #
-    #       new file:   README.md
-    #
-
-commit log ¤Î½ñ¤­Êı¤Ë¤Ä¤¤¤Æ¤Ï Linux Kernel ¤Ë¤ª¤±¤ëºîË¡¤òÉ®Æ¬¤Ë¡¢ÍÍ¡¹¤Ê°Õ¸«¤¬¤¢¤ê¤Ş¤¹¤Î¤Ç¡¢¤½¤ì¤é¤òÄ´¤Ù¤Æ¤ß¤Æ²¼¤µ¤¤¡£
-¤Ş¤¿¡¢commit Ä¾¸å¤Î¾õÂÖ¤Ï°Ê²¼¤Î¤è¤¦¤Ë¤Ê¤ê¤Ş¤¹¡£
-
-    $ git status
-    # On branch master
-    nothing to commit (working directory clean)
-
-ÅöÁ³¤Ç¤¹¤¬¡¢commit ¸å¡¢²¿¤ÎÊÑ²½¤â¤¢¤ê¤Ş¤»¤ó¡¢¤È¤¤¤¦°ÕÌ£¤Ë¤Ê¤ê¤Ş¤¹¡£
-
-## commit log ¤Î³ÎÇ§
-
-Îò»Ë¤È¤½¤³¤Ëµ­Ï¿¤µ¤ì¤¿ commit log ¤ò³ÎÇ§¤¹¤ë¤¿¤á¤Î¥³¥Ş¥ó¥É¤¬ git log ¤Ç¤¹¡£ÁáÂ®³ÎÇ§¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£
-
-    $ git log
-    commit bb4da8eecdd143c845c68edac7bc47269a48799d
-    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-    Date:   Sat Sep 7 14:41:59 2013 +0900
-    
-        Initial commit
-
-¤Ş¤À°ì¤Ä¤À¤±¤Ç¤¹¤¬¡¢³Î¤«¤ËÎò»Ë¤Ëµ­Ï¿¤µ¤ì¤Æ¤¤¤ë¤³¤È¤¬Ê¬¤«¤ê¤Ş¤¹¡£commit ¤È¤¤¤¦Ê¸»úÎó¤Î±¦¤Ë½ĞÎÏ¤µ¤ì¤Æ¤¤¤ë¤Î¤¬¤³¤Î commit object ¤ò¼¨¤¹ hash key ¤È¤Ê¤ê¤Ş¤¹¡£git ¤Î¥³¥Ş¥ó¥É¤Ë¤ª¤¤¤Æ¤³¤Î hash key ¤ò»ÈÍÑ¤·¤Æ commit object ¤ò»Ø¤¹¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
-¥Õ¥¡¥¤¥ëÌ¾¤ò»ØÄê¤¹¤ë¤³¤È¤ä
-
-    $ git log README.md
-
-º¹Ê¬¤ò½ĞÎÏ¤¹¤ë¤³¤È¤â²ÄÇ½¤Ç¤¹¡£
-
-    $ git log -p
-
-Ê»ÍÑ¤â²ÄÇ½¤Ç¤¹¡£
-
-    $ git log -p README.md
-
-## ÊÑ¹¹º¹Ê¬¤Î³ÎÇ§
-
-git diff ¥³¥Ş¥ó¥É¤Ë¤è¤Ã¤ÆÊÑ¹¹º¹Ê¬¤Î³ÎÇ§¤¬²ÄÇ½¤Ç¤¹¡£¤È¤ê¤¢¤¨¤º README.md ¤ÎÃæ¿È¤¬¶õ¤Ç¤Ï¤¤¤±¤Ş¤»¤ó¤Î¤ÇÆâÍÆ¤òÄÉ²Ã¤·¤Ş¤¹¡£
-
-    $ echo '# Git Tutorial' >README.md
-    $ cat README.md
-    # Git Tutorial
-
-¾õÂÖ¤ò³ÎÇ§¤·¤Æ¤ß¤Ş¤¹¡£
-
-    $ git status
-    # On branch master
-    # Changes not staged for commit:
-    #   (use "git add <file>..." to update what will be committed)
-    #   (use "git checkout -- <file>..." to discard changes in working directory)
-    #
-    #       modified:   README.md
-    #
-    no changes added to commit (use "git add" and/or "git commit -a")
-
-git diff ¤Î¤ß¡¢¤Î¾ì¹ç¤Ï¥¹¥Æ¡¼¥¸¥ó¥°¤µ¤ì¤Æ¤¤¤Ê¤¤¥ï¡¼¥¯¥Ä¥ê¡¼¤ÎÊÑ¹¹º¹Ê¬¤¬½ĞÎÏ¤µ¤ì¤Ş¤¹¡£
-
-    $ git diff
-    diff --git a/README.md b/README.md
-    index e69de29..f6cfe9a 100644
-    --- a/README.md
-    +++ b/README.md
-    @@ -0,0 +1 @@
-    +# Git Tutorial
-
-¤Ç¤Ï git add ¤ÇÊÑ¹¹¤òÁ´¤Æ¥¤¥ó¥Ç¥¯¥¹¤ËÅĞÏ¿ (¥¹¥Æ¡¼¥¸¥ó¥°) ¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£
-
-    $ git add README.md
-
-¤Ş¤º¾õÂÖ¤ò³ÎÇ§¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£
-
-    git status
-    # On branch master
-    # Changes to be committed:
-    #   (use "git reset HEAD <file>..." to unstage)
-    #
-    #       modified:   README.md
-    #
-
-¥¤¥ó¥Ç¥¯¥¹¤ËÅĞÏ¿¤µ¤ì¤¿¤³¤È¤¬Ê¬¤«¤ê¤Ş¤¹¡£¤Ç¤Ï git diff ¤ò³ÎÇ§¤·¤Æ¤ß¤Ş¤¹¡£
-
-    $ git diff
-    $
-
-git diff ¤Ï¥¹¥Æ¡¼¥¸¥ó¥°¤µ¤ì¤Æ¤¤¤Ê¤¤¥ï¡¼¥¯¥Ä¥ê¡¼¤ÎÊÑ¹¹º¹Ê¬¤Î½ĞÎÏ¡¢¤Ç¤·¤¿¤Î¤Ç²¿¤â½ĞÎÏ¤µ¤ì¤Ê¤¤¤Î¤ÏÅöÁ³¤Ç¤¹¤Í¡£¥¤¥ó¥Ç¥¯¥¹¤ÈºÇ¿· commit ¤Îº¹Ê¬¤ò½ĞÎÏ¤¹¤ë¤¿¤á¤Î¥ª¥×¥·¥ç¥ó¤âÍÑ°Õ¤µ¤ì¤Æ¤¤¤Ş¤¹¡£
-
-    $ git diff --cached
-    diff --git a/README.md b/README.md
-    index e69de29..f6cfe9a 100644
-    --- a/README.md
-    +++ b/README.md
-    @@ -0,0 +1 @@
-    +# Git Tutorial
-
-¤¢¤ë¤¤¤Ï¥ï¡¼¥¯¥Ä¥ê¡¼¤ÈºÇ¿· commit ¤Îº¹Ê¬¤Î³ÎÇ§¤â¤Ç¤­¤Ş¤¹¡£
-
-    $ git diff HEAD
-    diff --git a/README.md b/README.md
-    index e69de29..f6cfe9a 100644
-    --- a/README.md
-    +++ b/README.md
-    @@ -0,0 +1 @@
-    +# Git Tutorial
-
-½ĞÎÏ¤ÏÆ±¤¸¤Ê¤Î¤Ç¤¹¤¬¡¢°ÕÌ£¹ç¤¤¤ËÈùÌ¯¤Ê°ã¤¤¤¬¤¢¤ë»ö¤òÍı²ò¤·¤ÆÄº¤±¤ì¤Ğ¤È»×¤¤¤Ş¤¹¡£commit ¤ÇÅĞÏ¿¤µ¤ì¤ë¾ğÊó¤¬³ÎÇ§¤Ç¤­¤Ş¤·¤¿¤Î¤Ç¡¢commit ¤·¤ÆÎò»Ë¤ò¤¹¤¹¤á¤Æ¤ß¤Ş¤¹¡£
-
-    $ git commit -m 'Add Title'
-    master 6104d27] Add Title
-     1 file changed, 1 insertion(+)
-
-½ô¡¹¤Î¾õÂÖ¤ò³ÎÇ§¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£¤Ş¤º git log ¤«¤é¡£
-
-    $ git log
-    commit 6104d273c936740836d38f1621e1ab6e1de4d72d
-    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-    Date:   Sat Sep 7 15:14:39 2013 +0900
-    
-        Add Title
-    
-    commit bb4da8eecdd143c845c68edac7bc47269a48799d
-    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-    Date:   Sat Sep 7 14:41:59 2013 +0900
-    
-        Initial commit
-
-Îò»Ë¤¬°ì¤Ä¤¹¤¹¤á¤é¤ì¤Æ¤¤¤ë»ö¤¬Ê¬¤«¤ê¤Ş¤¹¤Í¡£¼¡¤Ë status ¤Ï¤É¤¦¤«¡£
-
-    $ git status
-    # On branch master
-    nothing to commit (working directory clean)
-
-commit ¤òºîÀ®¤·¤¿¤Ğ¤«¤ê¤Î¾õÂÖ¤È¤¤»ö¤¬Ê¬¤«¤ê¤Ş¤¹¡£git diff ¤Ê¤É¤â³ÎÇ§¤·¤Æ¤ß¤Æ²¼¤µ¤¤¡£
-
-## branch
-
-Git ¤ÎÆÃÄ§¤È¤·¤Æ branch ¤ÎºîÀ®¤ä branch ¤ÇÊÑ¹¹¤µ¤ì¤¿½¤Àµ¤ò merge ¤¹¤ë¤³¤È¤¬Èó¾ï¤Ë´ÊÃ±¤Ç¤¢¤ë»ö¤¬µó¤²¤é¤ì¤Ş¤¹¡£ºî¶È¤ÎÊıË¡¤È¤·¤Æ branch ¤òºîÀ®¤·¤ÆÊÑ¹¹¤òÀ¹¤ê¹ş¤ó¤À¾å¤Ç»î¸³¤Ê¤É¤ò¹Ô¤Ê¤¤¡¢master branch ¤Ë merge ¤ò¤·¤Æ¤¤¤¯·Á¤¬°ìÈÌÅª¤Ç¤¹¡£
-¤Ş¤¿¡¢branch ¤Ç¹Ô¤Ê¤Ã¤¿ÊÑ¹¹¤ÏÂ¾¤Î branch ¤Ë±Æ¶Á¤·¤Ş¤»¤ó¡£¤³¤¦¤·¤¿»ÅÁÈ¤ß¤ò¾å¼ê¤Ë³èÍÑ¤Ç¤­¤ì¤Ğ¸úÎ¨Åª¤ËÆ±»şÊÂ¹Ô¤·¤¿³«È¯¤òÊ£¿ô¤Î¿Í¤ä¾ì½ê¤Ç¹Ô¤Ê¤Ã¤Æ¤¤¤¯¤³¤È¤¬²ÄÇ½¤È¤Ê¤ê¤Ş¤¹¡£
-¤³¤³¤Ç¤Ï¤³¤Î branch ¤Ë´Ø¤¹¤ëÁàºî¤ÎÊıË¡¤ò»î¤·¤Æ¤¤¤­¤Ş¤¹¡£
-
-branch ¤Î°ìÍ÷¤ÎÉ½¼¨¤È¸½ºßºî¶ÈÃæ¤Î branch ¤ò³ÎÇ§¤¹¤ë¤¿¤á¤Î¥³¥Ş¥ó¥É¤È¤·¤Æ git branch ¤È¤¤¤¦¥³¥Ş¥ó¥É¤¬¤¢¤ê¤Ş¤¹¡£³ÎÇ§¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£
-
-    $ git branch
-    * master
-
-¸½¾õ¤Ç¤Ï¥Ç¥Õ¥©¥ë¥È¤ÇÍÑ°Õ¤µ¤ì¤ë master ¤È¤¤¤¦ branch ¤Î¤ß¤¬Â¸ºß¤·¤Æ¤¤¤ë¾õÂÖ¤Ç¡¢¤«¤Ä¤½¤³¤Çºî¶ÈÃæ¡¢¤È¤¤¤¦»ö¤¬Ê¬¤«¤ê¤Ş¤¹¡£branch ¤ÎÌ¾Á°¤Îº¸Â¦¤Ë '*' ¤¬É½¼¨¤µ¤ì¤Æ¤¤¤ë branch ¤¬¸½ºßºî¶ÈÃæ¡¢¤È¤¤¤¦°ÕÌ£¤Ç¤¹¡£
-¤Ç¤Ï¼Âºİ¤Ë branch ¤òºîÀ®¤·¤Æ¤½¤³¤Çºî¶È¤ò¤·¤Æ¤ß¤ë¤³¤È¤Ë¤·¤Ş¤¹¡£°Ê²¼¤Î¥³¥Ş¥ó¥É¤¬¤è¤¯»È¤ï¤ì¤Ş¤¹¡£
-
-    $ git checkout -b feature-A
-    Switched to a new branch 'feature-A'
-
-¤³¤³¤Ç¤Ï feature-A ¤È¤¤¤¦ branch ¤ò¿·µ¬ºîÀ®¤·¤Æ¤½¤Î branch ¤Ë°ÜÆ°¤·¤Ş¤·¤¿¡£³ÎÇ§¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£
-
-    $ git branch
-    * feature-A
-      master
-
-¾õÂÖ¤¬ÊÑ¤ï¤Ã¤Æ¤¤¤ë¤Î¤¬Ê¬¤«¤ê¤Ş¤¹¤Í¡£
-¤³¤Î¾õÂÖ¤Ç git add ¤ä git commit ¤Ê¤É¤ÇÎò»Ë¤ò¤¹¤¹¤á¤ë¤È feature-A ¤È¤¤¤¦ branch ¤ËÂĞ¤·¤Æµ­Ï¿¤µ¤ì¤Ş¤¹¡£µÕ¤Ë¸À¤¦¤È master ¤ÎÎò»Ë¤Ï¤½¤Î¤Ş¤Ş¤È¤Ê¤ê¤Ş¤¹¡£
-README.md ¤Ë°ì¹ÔÄÉ²Ã¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£
-
-    $ vi README.md
-    $ cat README.md
-    # Git Tutorial
-    
-    - feature-A
-
-¤Ç¡¢¤³¤ÎÊÑ¹¹º¹Ê¬¤ò¥¤¥ó¥Ç¥¯¥¹¤ËÄÉ²Ã¤·¡¢commit ¤òºî¤ê¤Ş¤¹¡£
-
-    $ git add README.md
-    $ git commit -m 'Add feature-A'
-    [feature-A 720c978] Add feature-A
-     1 file changed, 2 insertions(+)
-
-¤³¤Î½¤Àµ¤¬ master branch ¤Ë¤Ï°ìÀÚ±Æ¶Á¤·¤Æ¤¤¤Ê¤¤¤³¤È¤ò³ÎÇ§¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£¤Ş¤º¡¢master branch ¤Ë°ÜÆ°¤·¤Ş¤¹¡£¤½¤¦¤¤¤¨¤Ğ branch ¤Î°ÜÆ°¤ÎÊıË¡¤Ë¤Ä¤¤¤Æ¾Ò²ğ¤¹¤ë¤Î¤Ï¤³¤ì¤¬»Ï¤á¤Æ¤Ç¤¹¤Í¡£git checkout ¤È¤¤¤¦¥³¥Ş¥ó¥É¤ò»È¤¤¤Ş¤¹¡£
-
-    $ git checkout master
-    Switched to branch 'master'
-
-README.md ¤ÎÃæ¿È³ÎÇ§¡£
-
-    $ cat README.md
-    # Git Tutorial
-
-¤¢¤ë¤¤¤ÏÎò»Ë¤Î³ÎÇ§¡£
-
-    $ git log
-    commit 6104d273c936740836d38f1621e1ab6e1de4d72d
-    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-    Date:   Sat Sep 7 15:14:39 2013 +0900
-    
-        Add Title
-    
-    commit bb4da8eecdd143c845c68edac7bc47269a48799d
-    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-    Date:   Sat Sep 7 14:41:59 2013 +0900
-    
-        Initial commit
-
-feature-A branch ¤ËÌá¤Ã¤Æ¤ß¤Ş¤¹¡£°ÜÆ°Àè¤Ë '-' ¤ò»ØÄê¤¹¤ë¤³¤È¤Ç°ì¤ÄÁ°¤Î current branch ¤Ë°ÜÆ°¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
-
-    $ git checkout -
-    Switched to branch 'feature-A'
-
-¥í¥°¤ª¤è¤Ó¥Õ¥¡¥¤¥ë¤ÎÆâÍÆ¤ò³ÎÇ§¤·¤Æ¤ß¤Æ¤¯¤À¤µ¤¤¡£
-
-## merge
-
-¤Ç¤Ï¡¢feature branch ¤Ç¤Îºî¶È¤Ï´°Î»¡¢¤È¤¤¤¦»ö¤Ë¤·¤Æ¡¢¤³¤Î branch ¤ËÀ¹¤ê¹ş¤ó¤À½¤Àµ¤ò master branch ¤Ë merge ¤·¤Ş¤·¤ç¤¦¡£
-¤Ş¤ºÅı¹ç¤¹¤ë master branch ¤Ë°ÜÆ°¤·¤Ş¤¹¡£
-
-    $ git checkout master
-    Switched to branch 'master'
-
-feature-A ¤ò merge ¤·¤Ş¤·¤ç¤¦¡£
-
-    $ git merge feature-A --no-ff
-
-¤¹¤ë¤È vi ¤¬µ¯Æ°¤µ¤ì¤Æ°Ê²¼¤ÊÉ½¼¨¤È¤Ê¤Ã¤¿¤Ï¤º¤Ç¤¹¡£
-
-    Merge branch 'feature-A'
-    
-    # Please enter a commit message to explain why this merge is necessary,
-    # especially if it merges an updated upstream into a topic branch.
-    #
-    # Lines starting with '#' will be ignored, and an empty message aborts
-    # the commit.
-
-¤³¤³¤Ç¤ÏÍ­Ìµ¤ò¸À¤ï¤µ¤º :wq ¤ÇÉ½¼¨¤µ¤ì¤Æ¤¤¤ëÆâÍÆ¤òÊİÂ¸¤·¤Æ vi ¤ò½ªÎ»¤·¤Ş¤¹¡£ÆâÍÆ¤ò½ñ´¹¤¨¤ëÉ¬Í×¤Ï¤¢¤ê¤Ş¤»¤ó¡£½ªÎ»¸å¡¢°Ê²¼¤Ê½ĞÎÏ¤¬³ÎÇ§¤Ç¤­¤ë¤È»×¤¤¤Ş¤¹¡£
-
-    Merge made by the 'recursive' strategy.
-     README.md | 2 ++
-     1 file changed, 2 insertions(+)
-
-¤³¤Î½ĞÎÏ¤Ï¡¢Àµ¾ï¤Ë merge ¤¬´°Î»¤·¤Ş¤·¤¿¡¢¤È¤¤¤¦°ÕÌ£¤Ë¤Ê¤ê¤Ş¤¹¡£¤Á¤ç¤Ã¤ÈÊÑ¤ï¤Ã¤¿·Á¤Ç¥í¥°¤ò³ÎÇ§¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£
-
-    $ git log --graph
-    *   commit 439e6372567238254ab93142df419cb59d660f58
-    |\  Merge: 6104d27 720c978
-    | | Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-    | | Date:   Sat Sep 7 15:40:40 2013 +0900
-    | | 
-    | |     Merge branch 'feature-A'
-    | |   
-    | * commit 720c978cf5e303fd539d7605d4b6e9c576bcf71f
-    |/  Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-    |   Date:   Sat Sep 7 15:31:59 2013 +0900
-    |   
-    |       Add feature-A
-    |  
-    * commit 6104d273c936740836d38f1621e1ab6e1de4d72d
-    | Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-    | Date:   Sat Sep 7 15:14:39 2013 +0900
-    | 
-    |     Add Title
-    |  
-    * commit bb4da8eecdd143c845c68edac7bc47269a48799d
-      Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-      Date:   Sat Sep 7 14:41:59 2013 +0900
-      
-          Initial commit
-
-branch ¤·¤ÆÊ¬´ô¤·¡¢Åı¹ç¤µ¤ì¤Æ¤¤¤ëÍÍ»Ò¤¬³ÎÇ§¤Ç¤­¤Ş¤¹¤Í¡£
-
-## reset
-
-Git ¤Ç¤ÏÎò»Ë¤ÎÁàºî¤ò½ÀÆğ¤Ë¹Ô¤Ê¤¦¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£¤³¤³¤Ç¤ÏÀè¤ËºîÀ®¤·¤¿ feature-A ¤òºî¤Ã¤Æ merge ¤¹¤ë¡¢¤È¤¤¤¦Îò»Ë¤ò´¬Ìá¤·¤Æ Fix-B ¤È¤¤¤¦¥È¥Ô¥Ã¥¯¥Ö¥é¥ó¥Á¤òºîÀ®¤·¤Æ merge ¤·¤¿¸å¤Ë¡¢ºÆÅÙ feature-A ¤ª¤è¤Ó master ¤È¤Î merge Áàºî¤òÉüµ¢¤µ¤»¤Æ Fix-B ¤È merge ¤¹¤ë¤È¤¤¤¦·Á¤ÇÎò»Ë¤ò½¤Àµ¤·¤Æ¤ß¤Ş¤¹¡£
-
-Îò»Ë¤òÌá¤·¤Æ Fix-B branch ¤òÄÉ²Ã
-
-    feature-A       o
-                   / \
-    master    o---o---o
-                  \
-    Fix-B          o
-
-feature-A ¤ÎÁàºî¤ò¼è¤ê¾Ã¤·¤Æ Fix-B branch ¤ÎÄÉ²Ã
-
-    master    o---o
-                  \
-    Fix-B          o
-
-Fix-B ÄÉ²Ã¸å¤Ï°Ê²¼¤Î¾õÂÖ¤òÌÜ»Ø¤¹
-
-    feature-A       o
-                   / \
-    master    o---o---o---o
-                  \      /
-    Fix-B          o-----
-
-¤Ç¤Ï¤ä¤Ã¤Æ¤ß¤Ş¤·¤ç¤¦¡£¤Ş¤º¸½¾õ¤ò³ÎÇ§¤·¤Ş¤¹¡£
-
-    $ git log --pretty
-    commit 439e6372567238254ab93142df419cb59d660f58
-    Merge: 6104d27 720c978
-    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-    Date:   Sat Sep 7 15:40:40 2013 +0900
-    
-        Merge branch 'feature-A'
-    
-    commit 720c978cf5e303fd539d7605d4b6e9c576bcf71f
-    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-    Date:   Sat Sep 7 15:31:59 2013 +0900
-    
-        Add feature-A
-    
-    commit 6104d273c936740836d38f1621e1ab6e1de4d72d
-    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-    Date:   Sat Sep 7 15:14:39 2013 +0900
-    
-        Add Title
-    
-    commit bb4da8eecdd143c845c68edac7bc47269a48799d
-    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>
-    Date:   Sat Sep 7 14:41:59 2013 +0900
-    
-        Initial commit
-
-Add Title ¤Ê commit ¤Ş¤Ç´¬Ìá¤·¤Ş¤¹¡£
-
-    $ git reset --hard 6104d273
-    HEAD is now at 6104d27 Add Title
-
-¤½¤Î¸å¡¢Fix-B ¤Ê branch ¤òºîÀ®¤·¤Ş¤¹¡£
-
-    $ git checkout -b Fix-B
-    Switched to a new branch 'Fix-B'
-
-README.md ¤ÎÃæ¿È¤ò°Ê²¼¤Ë¤·¤Ş¤¹¡£
-
-    $ cat README.md
-    # Git Tutorial
-    
-    - Fix-B
-
-commit ¤òºî¤Ã¤Æ¤·¤Ş¤¤¤Ş¤¹¡£¾õÂÖ¤Ê¤É¡¢³ÎÇ§¤·¤Ê¤¬¤é¤¹¤¹¤á¤Æ¤ß¤Æ²¼¤µ¤¤¡£
-
-    $ git add README.md
-    $ git commit -m 'Fix B'
-    [Fix-B 0bd9388] Fix B
-     1 file changed, 3 insertions(+)
-
-¤³¤Î»şÅÀ¤ÇÎò»Ë¤Ï¤³¤¦¤Ê¤Ã¤Æ¤¤¤ë¤Ï¤º¤Ç¤¹¡£
-
-    master    o---o
-                  \
-    Fix-B          o
-
-¤³¤³¤«¤é°Ê²¼¤òÌÜ»Ø¤·¤Ş¤¹¡£
-
-    feature-A       o
-                   / \
-    master    o---o---o---o
-                  \      /
-    Fix-B          o-----
-
-¤Ş¤º feature-A ¤ò merge ¤·¤¿¾õÂÖ¤òÉü¸µ¤·¤Ş¤¹¡£git reflog ¤È¤¤¤¦¥³¥Ş¥ó¥É¤Î½ĞÎÏ¤ò³ÎÇ§¤·¤Æ¤ß¤Æ²¼¤µ¤¤¡£
-
-    $ git reflog
-    0bd9388 HEAD@{0}: commit: Fix B
-    6104d27 HEAD@{1}: checkout: moving from master to Fix-B
-    6104d27 HEAD@{2}: reset: moving to 6104d273
-    439e637 HEAD@{3}: merge feature-A: Merge made by the 'recursive' strategy.
-    6104d27 HEAD@{4}: checkout: moving from feature-A to master
-    720c978 HEAD@{5}: checkout: moving from master to feature-A
-    6104d27 HEAD@{6}: checkout: moving from feature-A to master
-    720c978 HEAD@{7}: commit: Add feature-A
-    6104d27 HEAD@{8}: checkout: moving from master to feature-A
-    6104d27 HEAD@{9}: commit: Add Title
-    bb4da8e HEAD@{10}: commit (initial): Initial commit
-
-¤³¤³¤Ë½ĞÎÏ¤µ¤ì¤Æ¤¤¤ë hash key ¤È git reset --hard ¥³¥Ş¥ó¥É¤ÇÉü¸µ¤¬²ÄÇ½¤Ç¤¹¡£¤³¤Îµ­Ï¿¤Ï git gc ¤·¤Ê¤¤¸Â¤êÍ­¸ú¤Ç¤¹¡£ÁáÂ®Éü¸µ¤·¤Æ¤ß¤Ş¤¹¡£
-
-    $ git checkout master
-    $ git reset --hard 439e637
-    HEAD is now at 439e637 Merge branch 'feature-A'
-
-¸½¾õ¡¢°Ê²¼¤Ê¾õÂÖ¤Ë¤Ê¤Ã¤Æ¤¤¤ë¤Ï¤º¤Ç¤¹¡£
-
-    feature-A       o
-                   / \
-    master    o---o---o
-                  \
-    Fix-B          o
-
-## ¶¥¹ç¤Î²ò·è
-
-¤³¤³¤Ç Fix-B branch ¤ò merge ¤¹¤ì¤Ğ¥´¡¼¥ë¤Ç¤¹¡£ÁáÂ®¼Â¹Ô¤·¤Æ¤ß¤Ş¤¹¡£
-
-    $ git merge Fix-B --no-ff
-    Auto-merging README.md
-    CONFLICT (content): Merge conflict in README.md
-    Automatic merge failed; fix conflicts and then commit the result.
-
-CONFLICT ¤È½ĞÎÏ¤µ¤ì¤Æ¤¤¤Ş¤¹¡£feature-A ¤ÎÊÑ¹¹¤È Fix-B ¤ÎÊÑ¹¹¤¬¶¥¹ç¤·¤¿¤è¤¦¤Ç¤¹¡£README.md ¤ÎÃæ¿È¤ò³ÎÇ§¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£
-
-    $  cat README.md 
-    # Git Tutorial
-    
-    <<<<<<< HEAD
-    - feature-A
-    =======
-    - Fix-B
-    
-    >>>>>>> Fix-B
-
-HEAD ¤Î¾õÂÖ¤¬ <<<<<<< HEAD ¤«¤é ======= ¤Ş¤Ç¤Ç Fix-B ¤Î¾õÂÖ¤¬ ======= ¤«¤é >>>>>>> Fix-B ¤Ş¤Ç¤Ë¤Ê¤ê¤Ş¤¹¡£¥¨¥Ç¥£¥¿¤ÇËÜÍè¤¢¤ë¤Ù¤­¾õÂÖ¤Ë½¤Àµ¤·¤Ş¤¹¡£
-
-    $ cat README.md
-    # Git Tutorial
-    
-    - feature-A
-    - Fix-B
-
-¶¥¹ç¤¬²ò·è¤·¤¿¤Î¤Ç¸å»ÏËö¤ò¤·¤Æ¤ª¤­¤Ş¤¹¡£
-
-    $ git add README.md
-    $ git commit -m 'Fix conflict'
-    [master 8147c96] Fix conflict
-
-## commit log ¤Î½¤Àµ
-
-Ä¾Á°¤Î commit log ¤ò½¤Àµ¤¹¤ë¤Ë¤Ï git commit --amend ¥³¥Ş¥ó¥É¤ò»È¤¤¤Ş¤¹¡£ÀèÄø¤ÎÁàºî¤Ç Fix conflict ¤È¤·¤Æ¤¤¤Ş¤·¤¿¤¬¡¢ËÜÍè¤Ï Fix-B ¤Î merge ¤Ç¤¹¡£½¤Àµ¤·¤Æ¤ß¤Ş¤¹¡£
-
-    $ git commit --amend
-
-¤³¤ì¤Ç vi ¤¬µ¯Æ°¤µ¤ì°Ê²¼¤ÎÉ½¼¨¤È¤Ê¤ë¤Ï¤º¤Ç¤¹¡£
-
-    Fix conflict
-    
-    # Please enter the commit message for your changes. Lines starting
-    # with '#' will be ignored, and an empty message aborts the commit.
-    # On branch master
-    # Changes to be committed:
-    #   (use "git reset HEAD^1 <file>..." to unstage)
-    #
-    #       modified:   README.md
-    #
-
-commit log ¤ÎÉôÊ¬¤ò Merge branch 'Fix-B' ¤È½¤Àµ¤·¤Æ¥¨¥Ç¥£¥¿¤ò½ªÎ»¤·¤Ş¤·¤ç¤¦¡£°Ê²¼¤Ê½ĞÎÏ¤¬³ÎÇ§¤Ç¤­¤ë¤È»×¤¤¤Ş¤¹¡£
-
-    [master a2692bb] Merge branch 'Fix-B'
-
-git log ¤Ç³ÎÇ§¤ò¤·¤Æ¤ª¤¤¤Æ²¼¤µ¤¤¡£
-
-## Îò»Ë¤Î²şÊÑ
-
-¥È¥Ô¥Ã¥¯¥Ö¥é¥ó¥Á¤ò merge ¤¹¤ëÁ°¤Ë merge ÂĞ¾İ¤È¤Ê¤ë commit ¤Ë²¿¤é¤«¤Î¥ß¥¹¤ò¸«¤Ä¤±¤Æ¤·¤Ş¤Ã¤¿¤è¤¦¤Ê¾ì¹ç¡¢½¤Àµ commit ¤òºî¤Ã¤ÆÎò»Ë¤ò²şÊÑ¤·¤Æ¤·¤Ş¤¦¤è¤¦¤ÊÊıË¡¤¬¤¢¤ê¤Ş¤¹¡£¤¢¤ë¤¤¤Ï Github ¤Ç PR (Pull Request) ¤¹¤ë»ş¤Ë PR ¤Ê branch ¤Ë´Ş¤Ş¤ì¤ë commit ¤ò°ì¤Ä¤ËÅ»¤á¤Æ¤·¤Ş¤¦¤è¤¦¤Ê¾ì¹ç¤Ë¤âÆ±ÍÍ¤Î¥Æ¥¯¥Ë¥Ã¥¯¤¬»È¤ï¤ì¤Ş¤¹¡£
-
-¤È¤ê¤¢¤¨¤º¿·¤¿¤Ê¥È¥Ô¥Ã¥¯¥Ö¥é¥ó¥Á¤òºîÀ®¤·¤Ş¤¹¡£
-
-    $ git checkout -b feature-C
-    Switched to a new branch 'feature-C'
-
-README.md ¤ò°Ê²¼¤Î¤è¤¦¤ËÊÑ¹¹¤·¤Ş¤¹¡£
-
-    $ cat README.md
-    # Git Tutorial
-    
-    - feature-A
-    - Fix-B
-    - feature-CCC
-    
-¤³¤Î½¤Àµ¤Î commit ¤òºîÀ®¤·¤Æ¤ª¤¤¤Æ²¼¤µ¤¤¡£¤¢¤Ş¤ê¤ª¤¹¤¹¤á¤Ï¤·¤Ş¤»¤ó¤¬¡¢°Ê²¼¤ÊÊıË¡¤â»È¤¨¤Ş¤¹¡£
-
-    $ git commit -am 'Add feature-C'
-    [feature-C 3ee3bdf] Add feature-C
-     1 file changed, 1 insertion(+)
-
-¼Â¤ÏÄÉ²Ã¤·¤¿
-
-    - feature-CCC
-
-¤Ï¸Î°Õ¤Ë¤³¤¦¤·¤¿¤Î¤Ç¤¹¤¬¡¢Àµ¤·¤¯¤Ï
-
-    - feature-C
-
-¤Ç¤¹¡£½¤Àµ¤·¤Æ¤ª¤¤¤Æ²¼¤µ¤¤¡£½¤Àµ¸å¤Îº¹Ê¬¤Ï°Ê²¼¤È¤Ê¤ê¤Ş¤¹¡£
-
-    $ git diff
-    diff --git a/README.md b/README.md
-    index 61ac2c4..027d69a 100644
-    --- a/README.md
-    +++ b/README.md
-    @@ -2,5 +2,5 @@
-     
-     - feature-A
-     - Fix-B
-    -- feature-CCC
-    +- feature-C
-     
-
-commit ¤òºî¤Ã¤Æ¤ª¤­¤Ş¤·¤ç¤¦¡£
-
-    $ git commit -am 'Fix typo'
-    [feature-C 7a9c87e] Fix typo
-     1 file changed, 1 insertion(+), 1 deletion(-)
-
-¤³¤Î Fix typo ¤Ê commit ¤Ï¤Ç¤­¤ì¤Ğ»Ä¤·¤Æ¤ª¤­¤¿¤¯¤Ï¤Ê¤¤¤Î¤Ç¡¢Îò»Ë¤ò²şãâ¤·¤Ş¤¹¡£
-
-    $ git rebase -i HEAD~2
-
-HEAD~2 ¤Ï HEAD ´Ş¤áÆó¤ÄÊ¬¤Î commit ¤òÂĞ¾İ¤È¤¹¤ë¡¢¤È¤¤¤¦°ÕÌ£¤Ë¤Ê¤ê¤Ş¤¹¡£¤³¤Î¥³¥Ş¥ó¥É¤ò¼Â¹Ô¤¹¤ë¤È vi ¤¬µ¯Æ°¤·¤Æ°Ê²¼¤¬É½¼¨¤µ¤ì¤ë¤Ç¤·¤ç¤¦¡£
-
-    pick 63d6760 Add feature-C
-    pick 7a9c87e Fix typo
-    
-    # Rebase a2692bb..7a9c87e onto a2692bb
-    #
-    # Commands:
-    #  p, pick = use commit
-    #  r, reword = use commit, but edit the commit message
-    #  e, edit = use commit, but stop for amending
-    #  s, squash = use commit, but meld into previous commit
-    #  f, fixup = like "squash", but discard this commit's log message
-    #  x, exec = run command (the rest of the line) using shell
-    #
-    # These lines can be re-ordered; they are executed from top to bottom.
-    #
-    # If you remove a line here THAT COMMIT WILL BE LOST.
-    # However, if you remove everything, the rebase will be aborted.
-    #
-    # Note that empty commits are commented out
-
-Fix typo ¤Ê commit ¤Î¹Ô¤ÎÀèÆ¬¤ò fixup °·¤¤¤È¤·¤Ş¤¹¡£±¦Â¦¤Ëµ­½Ò¤µ¤ì¤Æ¤¤¤ëÄÌ¤ê¡¢ÊÑ¹¹¤ÏÀ¹¤ê¹ş¤à¤¬ commit log ¤òÇË´ş¡¢¤È¤¤¤¦°ÕÌ£¤Ë¤Ê¤ê¤Ş¤¹¡£
-
-    pick 63d6760 Add feature-C
-    f 7a9c87e Fix typo
-
-¤³¤ì¤Ç¥¨¥Ç¥£¥¿¤ò½ªÎ»¤·¤Ş¤·¤ç¤¦¡£°Ê²¼¤Ê½ĞÎÏ¤¬³ÎÇ§¤Ç¤­¤ë¤È»×¤¤¤Ş¤¹¡£
-
-    [detached HEAD c1e48cb] Add feature-C
-     1 file changed, 1 insertion(+)
-    Successfully rebased and updated refs/heads/feature-C.
-
-git log ¤ä README.md ¤ÎÆâÍÆ¤â³ÎÇ§¤·¤Æ¤ª¤¤¤Æ²¼¤µ¤¤¡£ÌäÂêÌµ¤¤¤è¤¦¤Ç¤¢¤ì¤Ğ¤³¤Î branch ¤â master ¤Ë merge ¤·¤Æ¤ª¤­¤Ş¤·¤ç¤¦¡£
-
-    $ git checkout master
-    Switched to branch 'master'
-    $ git merge feature-C --no-ff
-    Merge made by the 'recursive' strategy.
-     README.md | 1 +
-     1 file changed, 1 insertion(+)
-
-## ¥ê¥â¡¼¥È¥ê¥İ¥¸¥È¥ê
-
-¤³¤ì¤Ş¤Ç¥í¡¼¥«¥ë¤Î¤ß¤ÎÁàºî¤Ç¤·¤¿¤¬¡¢¥ê¥â¡¼¥È¥ê¥İ¥¸¥È¥ê¤ò´Ş¤á¤¿Áàºî¤Ë¤Ä¤¤¤Æ¤â³ÎÇ§¤ò¤·¤Æ¤ª¤­¤¿¤¤¤È»×¤¤¤Ş¤¹¡£¥ê¥â¡¼¥È¥ê¥İ¥¸¥È¥ê¤Ë»È¤¦¤Î¤Ï Github ¤Ç¤¹¡£
-¤Ş¤º¡¢Github ¤Î¼«Ê¬¤Î¥¢¥«¥¦¥ó¥È¤Ë git-tutorial ¤È¤¤¤¦¥ê¥İ¥¸¥È¥ê¤ò READE ¥Õ¥¡¥¤¥ë¤òºîÀ®¤·¤Ê¤¤·Á¤ÇºîÀ®¤·¤Æ¤ª¤¤¤Æ²¼¤µ¤¤¡£
-ºîÀ®¤·¤¿¥ê¥İ¥¸¥È¥ê¤Î URL ¤Ï git@github.com:¥æ¡¼¥¶Ì¾:/git-tutorial.git ¤È¤Ê¤Ã¤Æ¤¤¤ë¤Ï¤º¤Ç¤¹¡£¤³¤ì¤ò remote ¤Î origin ¤È¤·¤ÆÅĞÏ¿¤¹¤ë¤Ë¤Ï°Ê²¼¤Î¥³¥Ş¥ó¥É¤ò»È¤¤¤Ş¤¹¡£ÊØµ¹¾å¥æ¡¼¥¶¥¢¥«¥¦¥ó¥È¤Ï yamanetoshi ¤ò»È¤¤¤Ş¤¹¡£
-
-    $ git remote add origin git@github.com:yamanetoshi/git-tutorial.git
-
-¤³¤ì¤Ç .git/config ¤Ë°Ê²¼¤Î¾ğÊó¤¬ÄÉ²Ã¤µ¤ì¤Æ¤¤¤ë¤Ï¤º¤Ç¤¹¡£
-
-    [remote "origin"]
-            url = git@github.com:yamanetoshi/git-tutorial.git
-            fetch = +refs/heads/*:refs/remotes/origin/*
-
-¥ê¥â¡¼¥È¥ê¥İ¥¸¥È¥ê¤Ë¥í¡¼¥«¥ë¤Î¾ğÊó¤ò¥³¥Ô¡¼¤¹¤ë¤Ë¤Ï°Ê²¼¤Î¤è¤¦¤Ë¤·¤Ş¤¹¡£
-
-    $ git push -u origin master
-    Counting objects: 20, done.
-    Delta compression using up to 4 threads.
-    Compressing objects: 100% (8/8), done.
-    Writing objects: 100% (20/20), 1.60 KiB, done.
-    Total 20 (delta 3), reused 0 (delta 0)
-    To git@github.com:yamanetoshi/git-tutorial.git
-     * [new branch]      master -> master
-    Branch master set up to track remote branch master from origin.
-
-remote ¤Î origin ¤Ç»ØÄê¤µ¤ì¤Æ¤¤¤ë URL ¤Ê¥ê¥â¡¼¥È¥ê¥İ¥¸¥È¥ê¤Ë¥í¡¼¥«¥ë¤Î master ¥Ö¥é¥ó¥Á¤ò push ¤·¤Ş¤¹¡¢¤È¤¤¤¦°ÕÌ£¤Ë¤Ê¤ê¤Ş¤¹¡£-u ¥ª¥×¥·¥ç¥ó¤Î°ÕÌ£¤Ï³Æ¼«Ä´¤Ù¤Æ¤ß¤Æ²¼¤µ¤¤¡£
-¤Ş¤¿¡¢Github ¤Î¥ê¥â¡¼¥È¥ê¥İ¥¸¥È¥ê¤Î¾õÂÖ¤â¥Ö¥é¥¦¥¶¤Ê¤É¤Ç³ÎÇ§¤·¤Æ¤ß¤Æ²¼¤µ¤¤¡£
-
-## ¥ê¥â¡¼¥È¤Ë branch ¤òÄÉ²Ã
-
-¥ê¥â¡¼¥È¥ê¥İ¥¸¥È¥ê¤Ë¤Ï master ¤Ç¤Ï¤Ê¤¤ branch ¤â push ²ÄÇ½¤Ç¤¹¡£°ì¤Ä branch ¤ò¿·µ¬¤ËºîÀ®¤·¤Æ¤ß¤Æ¥ê¥â¡¼¥È¤Ë push ¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£
-
-    $ git checkout -b feature-D
-    Switched to a new branch 'feature-D'
-
-ºîÀ®¤µ¤ì¤¿¤³¤Î branch ¤ò push ¤·¤Æ¤ß¤Ş¤¹¡£
-
-    $ git push -u origin feature-D
-    Total 0 (delta 0), reused 0 (delta 0)
-    To git@github.com:yamanetoshi/git-tutorial.git
-     * [new branch]      feature-D -> feature-D
-    Branch feature-D set up to track remote branch feature-D from origin.
-
-Github ¾å¤Ç feature-D branch ¤¬ºîÀ®¤µ¤ì¤Æ¤¤¤ë¤³¤È¤ò³ÎÇ§¤·¤Æ¤ß¤Æ²¼¤µ¤¤¡£PR ¸ş¤±¤Î branch ¤Ê¤É¤â¤³¤¦¤·¤¿·Á¤Ç push ¤·¤Æ¤ª¤¯·Á¤Ë¤Ê¤ê¤Ş¤¹¡£
-
-## ¥ê¥â¡¼¥È branch ¤Î¼èÆÀ
-
-push ¤·¤¿ branch ¤Î¼èÆÀÊıË¡¤Ç¤¹¡£ÊÌ¾ì½ê¤Ëºî¶ÈÍÑ¤Î¥Ç¥£¥ì¥¯¥È¥ê¤ò·¡¤Ã¤Æ¤ª¤­¤Ş¤·¤ç¤¦¡£
-
-    $ mkdir other-work
-
-¤½¤·¤Æ¡¢clone ¤·¤Æ¤ß¤Ş¤¹¡£°Ê²¼¤Ï¤½¤Î¤Ş¤Ş¥³¥Ş¥ó¥É¤òÆşÎÏ¤¹¤ë¤Î¤Ç¤Ï¤Ê¤¯¡¢¼«Ê¬¤Î¥ê¥â¡¼¥È¥ê¥İ¥¸¥È¥ê¤¬¤¢¤ë URL ¤ËÊÑ¹¹¤·¤Æ¥³¥Ş¥ó¥É¼Â¹Ô¤·¤Æ¤¯¤À¤µ¤¤¡£
-
-    $ git clone git@github.com:yamanetoshi/git-tutorial.git
-    Cloning into 'git-tutorial'...
-    remote: Counting objects: 20, done.
-    remote: Compressing objects: 100% (5/5), done.
-    remote: Total 20 (delta 3), reused 20 (delta 3)
-    Receiving objects: 100% (20/20), done.
-    Resolving deltas: 100% (3/3), done.
-
-git branch ¤Ç³ÎÇ§¤·¤Æ¤ß¤Ş¤·¤ç¤¦¡£
-
-    $ git branch -a
-    * master
-      remotes/origin/HEAD -> origin/master
-      remotes/origin/feature-D
-      remotes/origin/master
-
-¼èÆÀ¤À¤±¤Ç¤¢¤ì¤ĞÃ±½ã¤Ë git checkout ¤ÇÌäÂê¤¢¤ê¤Ş¤»¤ó¡£
-
-    $ git checkout feature-D
-    Switched to a new branch 'feature-D'
-
-¤¢¤ë¤¤¤ÏÌ¾Á°¤òÊÑ¤¨¤Æ¡¢¤È¤¤¤¦»ö¤Ç¤¢¤ì¤Ğ°Ê²¼¤Ë¤Ê¤ë¤Ç¤·¤ç¤¦¤«¡£
-
-    $ git checkout -b new_feature origin/feature-D
-    Branch new_feature set up to track remote branch feature-D from origin.
-    Switched to a new branch 'new_feature'
-
-¤Ş¤¿¡¢remote Â¦¤Ç¹¹¿·¤µ¤ì¤¿¾ì¹ç¤Ï git fetch ¤È¤¤¤¦¥³¥Ş¥ó¥É¤Ç¼èÆÀ¤·¡¢¥ê¥â¡¼¥È¤È merge ¤¹¤ë»ö¤Ç¥í¡¼¥«¥ë¤Î¹¹¿·¤â²ÄÇ½¤Ç¤¹¡£¤³¤Î¤¢¤¿¤ê¤Ï¼«Ê¬¤Ç¿§¡¹³ÎÇ§¤ò¤·¤Æ¤ß¤Æ²¼¤µ¤¤¡£
-
-## ¥ê¥â¡¼¥È¤Î branch ¤òºï½ü
-
-¤³¤ì¤ÇºÇ¸å¤Ç¤¹¡£¥ê¥â¡¼¥È¤Ë¤¢¤ë branch ¤Îºï½ü¤ÎÊıË¡¤Ç¤¹¡£Îã¤¨¤Ğ feature-D ¤òºï½ü¤¹¤ë¾ì¹ç¤Ï°Ê²¼¤Ç¤¹¡£
-
-    $ git push origin :feature-D
-    To git@github.com:yamanetoshi/git-tutorial.git
-     - [deleted]         feature-D
-
-
-¤Ü¤¯¤Ï¤³¤ÎÊıË¡¤ò¤è¤¯Ëº¤ì¤ë (¸åÅ·À­µ­²±ÉÔÁ´) ¤Î¤Ç¤³¤Á¤é¤Ë¹µ¤¨¤µ¤»¤ÆÄº¤­¤Ş¤·¤¿¡£
-
-## ¤ª¤ï¤ê¤Ë
-
-¤³¤ì¤Ç¥Ï¥ó¥º¥ª¥ó¤Ï½ª¤ï¤ê¤Ç¤¹¡£¤Ç¤Ï³§¤µ¤ó¡¢Have a good Git(hub) life!!
+# Git Handson## æœ€åˆã«Git ã«é–¢ã™ã‚‹åŸºæœ¬çš„ãªæ“ä½œæ–¹æ³•ã‚’ Hands-on å½¢å¼ã§å­¦ã‚“ã§ã„ãã¾ã—ã‚‡ã†ã€‚ä»¥é™ã§åˆ—æŒ™ã•ã‚Œã¦ã„ã‚‹é †ç•ªé€šã‚Šã«æ“ä½œã‚’ã—ãªãŒã‚‰æ“ä½œã®æ–¹æ³•ã‚’èº«ã«ä»˜ã‘ã¦ã„ãã¾ã—ã‚‡ã†ã€‚## äº‹å‰ç¢ºèªæ­£ã—ãç’°å¢ƒè¨­å®šãŒã§ãã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’ç¢ºèªã—ã¦ãŠã„ã¦ä¸‹ã•ã„ã€‚ã‚³ãƒãƒ³ãƒ‰ã¯ git config -l ã§ã™ã€‚    $  git config -l    user.name=YAMANE Toshiaki    user.email=yamanetoshi@gmail.comæœ€ä½é™ã€ä¸Šè¨˜äºŒç‚¹ã¯ç¢ºèªã•ã‚Œã¦ã„ã‚‹ã“ã¨ã€ãŒå‰æã¨ãªã‚Šã¾ã™ã€‚æœªè¨­å®šã®å ´åˆã«ã¯ä»¥ä¸‹ã®æ–¹æ³•ã§ç™»éŒ²ã‚’ã—ã¦ãŠã„ã¦ä¸‹ã•ã„ã€‚    $ git config --global --add user.name <ã‚ãªãŸã®åå‰ (ascii ã§)>    $ git config --global --add user.email <ã‚ãªãŸã® email address>## ãƒªãƒã‚¸ãƒˆãƒªã®åˆæœŸåŒ–ã¾ãšãƒªãƒã‚¸ãƒˆãƒªã®åˆæœŸåŒ–ãŒå¿…è¦ã§ã™ã€‚ä½œæ¥­ç”¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æ˜ã‚Šã€ãƒªãƒã‚¸ãƒˆãƒªã®åˆæœŸåŒ–ã‚’è¡Œãªã„ã¾ã™ã€‚    $ mkdir git-tutorial    $ cd git-tutorial    $ git init    Initialized empty Git repository in /Users/rms/tmp/git-tutorial/.git/ã“ã“ã§ä½œæˆã•ã‚ŒãŸ .git ã¨ã„ã†ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ãƒªãƒã‚¸ãƒˆãƒªã¨å‘¼ã³ã¾ã™ã€‚ã“ã“ã‹ã‚‰æ­´å²ã‚’é¡ã£ã¦ä»¥å‰ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®çŠ¶æ…‹ã‚’å–ã‚Šå‡ºã™ã“ã¨ãªã©ãŒã§ãã¾ã™ã€‚## ç”¨èªã®å®šç¾©### ãƒªãƒã‚¸ãƒˆãƒªGit ã§ç®¡ç†ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª (ãƒ¯ãƒ¼ã‚¯ãƒ„ãƒªãƒ¼ã¨å‘¼ã³ã¾ã™) ã®æœ€ä¸Šä½ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«å­˜åœ¨ã™ã‚‹ .git ã¨ã„ã†ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ãƒªãƒã‚¸ãƒˆãƒªã¨å‘¼ã³ã¾ã™ã€‚ãã®ãƒªãƒã‚¸ãƒˆãƒªã«ãƒ–ãƒ©ãƒ³ãƒã‚„ãã‚Œæ¯ã«å­˜åœ¨ã—ã¦ã„ã‚‹æ­´å² (å¤‰æ›´å±¥æ­´) ãŒè¨˜éŒ²ã•ã‚Œã¦ã„ã¾ã™ã€‚### ãƒ¯ãƒ¼ã‚¯ãƒ„ãƒªãƒ¼Git ã§ç®¡ç†ã•ã‚Œã¦ã„ã‚‹æƒ…å ±ã¯ãã‚Œå°‚ç”¨ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ä¿æŒã•ã‚Œã¦ã„ã¾ã™ãŒã€ã“ã‚Œã ã‘ã§ã¯æˆ‘ã€…ãŒé–²è¦§ã—ãŸã‚Šå¤‰æ›´ã—ãŸã‚Šã€ã¨ã„ã†ç›®çš„ã§åˆ©ç”¨ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚è¨˜éŒ²ã•ã‚Œã¦ã„ã‚‹å†…å®¹ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã‚·ã‚¹ãƒ†ãƒ ä¸Šã«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªæ§‹é€ ã¨ã—ã¦å±•é–‹ã™ã‚‹äº‹ã§æˆ‘ã€…ãƒ¦ãƒ¼ã‚¶ãŒé€šå¸¸ã®ç›®çš„ã«ä½¿ãˆã‚‹çŠ¶æ…‹ã«ãªã‚Šã¾ã™ã€‚ã“ã®é ˜åŸŸã‚’ã€Œãƒ¯ãƒ¼ã‚¯ãƒ„ãƒªãƒ¼ã€ã‚ã‚‹ã„ã¯ã€Œãƒ¯ãƒ¼ã‚­ãƒ³ã‚°ãƒ„ãƒªãƒ¼ã€ã¨å‘¼ã³ã€ãƒªãƒã‚¸ãƒˆãƒªã«è¨˜éŒ²ã•ã‚Œã¦ã„ã‚‹å†…å®¹ã‚’ãƒ¯ãƒ¼ã‚¯ãƒ„ãƒªãƒ¼ã«å±•é–‹ãƒ»åæ˜ ã™ã‚‹è¡Œç‚ºã‚’ã€Œãƒã‚§ãƒƒã‚¯ã‚¢ã‚¦ãƒˆ (checkout) ã™ã‚‹ã€ã¨è¨€ã„ã¾ã™ã€‚ä»¥ä¸‹ã« Git ã«ãŠã‘ã‚‹ç‰ˆç®¡ç†ã®ãƒ•ãƒ­ãƒ¼ã‚’ã€Œå…¥é–€ Git (æ¿±é‡ç´”)ã€ã‚ˆã‚Šå¼•ç”¨ã—ã¾ã™ã€‚>> git ã§ã®ç‰ˆç®¡ç†ã¯>>>> - 1ã¤ã®ãƒªãƒ“ã‚¸ãƒ§ãƒ³ã®å†…å®¹ã‚’ãƒ¯ãƒ¼ã‚¯ãƒ„ãƒªãƒ¼ã«ãƒã‚§ãƒƒã‚¯ã‚¢ã‚¦ãƒˆã—>> - ãƒ¯ãƒ¼ã‚¯ãƒ„ãƒªãƒ¼ä¸Šã®ãƒ•ã‚¡ã‚¤ãƒ«ã«å¤‰æ›´ã‚’åŠ ãˆ>> - å¤‰æ›´å¾Œã®ãƒ¯ãƒ¼ã‚¯ãƒ„ãƒªãƒ¼ä¸Šã®å†…å®¹ã‚’å…ƒã«æ–°ã—ã„ãƒªãƒ“ã‚¸ãƒ§ãƒ³ã‚’ä½œæˆã—ã€ãƒ–ãƒ©ãƒ³ãƒãŒæŒ‡ã—ç¤ºã™ã‚³ãƒŸãƒƒãƒˆã‚’é€²ã‚ã‚‹>> ã¨ã„ã†æµã‚Œã§é€²ã‚ã‚‰ã‚Œã‚‹ã“ã¨ã«ãªã‚Šã¾ã™ã€‚### ã‚¤ãƒ³ãƒ‡ã‚¯ã‚¹ãƒªãƒã‚¸ãƒˆãƒªã¨ãƒ¯ãƒ¼ã‚¯ãƒ„ãƒªãƒ¼ã¨ã®é–“ã«ä½ç½®ã—ã€æ¬¡ã« commit ã™ã‚‹å†…å®¹ã‚’é€æ¬¡çš„ã«ä½œã‚Šä¸Šã’ã¦ã„ããŸã‚ã®ãƒãƒƒãƒ•ã‚¡ã€ã¨æ¿±é‡ç´”ã•ã‚“ã¯è¡¨ç¾ãªã•ã£ã¦ã„ã¾ã™ã€‚ã“ã“ã«ç™»éŒ²ã•ã‚ŒãŸæƒ…å ±ã®ã¿ãŒ commit ã¨ã—ã¦ç™»éŒ²ã•ã‚Œã‚‹å†…å®¹ã«ãªã‚Šã¾ã™ã€‚ã“ã“ã«ç™»éŒ²ã•ã‚Œã‚‹æƒ…å ±ã®å˜ä½ã¯ãƒ•ã‚¡ã‚¤ãƒ«ã§ã¯ãªãå¤‰æ›´ã®å·®åˆ†ã§ã‚ã‚‹ã€ã¨ã„ã†äº‹ã‚’è¦šãˆã¦ãŠã„ã¦ä¸‹ã•ã„ã€‚## ãƒªãƒã‚¸ãƒˆãƒªã®çŠ¶æ…‹çŠ¶æ…‹ã‚’ç¢ºèªã™ã‚‹ãŸã‚ã®ã‚³ãƒãƒ³ãƒ‰ã¨ã—ã¦ git status ã¨ã„ã†ã‚³ãƒãƒ³ãƒ‰ãŒã‚ã‚Šã¾ã™ã€‚ãƒªãƒã‚¸ãƒˆãƒªã‚’ä½œæˆã—ãŸã°ã‹ã‚Šã§ã‚ã‚Œã°ä»¥ä¸‹ã®ã‚ˆã†ãªå‡ºåŠ›ã¨ãªã‚‹ã¯ãšã§ã™ã€‚    $ git status    # On branch master    #    # Initial commit    #    nothing to commit (create/copy files and use "git add" to track)ã“ã“ã§ã¯ã¾ã ä½•ã®æ“ä½œã‚‚è¡Œãªã£ã¦ã„ãªã„ãŸã‚åˆæœŸçŠ¶æ…‹ã§ã™ã€ã¨ã„ã†æ„å‘³ã®å‡ºåŠ›ã«ãªã£ã¦ã„ã‚‹ã“ã¨ãŒåˆ†ã‹ã‚Šã¾ã™ã€‚ã¾ã  commit ã‚’ä½œã£ã¦ã‚‚ã„ãªã„ã§ã™ã—ã€commit ã•ã‚Œã‚‹ã¹ããƒ•ã‚¡ã‚¤ãƒ«ã‚‚è¦‹å½“ãŸã‚Šã¾ã›ã‚“ã®ã§ã“ã‚Œã¯å½“ç„¶ã¨è¨€ãˆã¾ã™ã€‚è«¸ã€…ã®æ“ä½œã«ã‚ˆã£ã¦ãƒªãƒã‚¸ãƒˆãƒªã®çŠ¶æ…‹ã¯å¤‰åŒ–ã—ã¾ã™ã€‚ãã®çŠ¶æ…‹ã‚’ã“ã®ã‚³ãƒãƒ³ãƒ‰ã§ç¢ºèªã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã®ã§ã€ä»Šå¾Œã¯ã“ã‚Œã‚’ã‚ˆãä½¿ã£ã¦ã„ãã“ã¨ã«ãªã‚‹ã§ã—ã‚‡ã†ã€‚## ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¸ã®ç™»éŒ²ãã‚Œã§ã¯ã“ã®ãƒªãƒã‚¸ãƒˆãƒªã®ç®¡ç†å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ã¾ã™ã€‚ãƒ•ã‚¡ã‚¤ãƒ«åã¯ README.md ã¨ã—ã¾ã™ã€‚touch ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ãŸã‚‰ãƒªãƒã‚¸ãƒˆãƒªã®çŠ¶æ…‹ã‚’ç¢ºèªã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚    $ touch README.md    $ git status    # On branch master    #    # Initial commit    #    # Untracked files:    #   (use "git add <file>..." to include in what will be committed)    #    #       README.md    nothing added to commit but untracked files present (use "git add" to track)ã¾ã  commit ã¯ä½œæˆã—ã¦ã„ã¾ã›ã‚“ã€‚ãã—ã¦ Untracked files ã¨ã—ã¦ä»Šä½œæˆã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ãŒåˆ—æŒ™ã—ã¦ã‚ã‚‹ã“ã¨ãŒåˆ†ã‹ã‚Šã¾ã™ã€‚ã§ã¯ã“ã® README.md ã‚’ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ³ã‚°é ˜åŸŸã¨å‘¼ã°ã‚Œã‚‹ã‚¤ãƒ³ãƒ‡ã‚¯ã‚¹ã¸ã®ç™»éŒ²ã‚’è¡Œãªã„ã¾ã™ã€‚    $ git add README.md    $ git status    # On branch master    #    # Initial commit    #    # Changes to be committed:    #   (use "git rm --cached <file>..." to unstage)    #    #       new file:   README.md    #README.md ã‚’ git add ã‚³ãƒãƒ³ãƒ‰ã§ã‚¤ãƒ³ãƒ‡ã‚¯ã‚¹ã«ç™»éŒ² (ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ³ã‚°) ã—ãŸã“ã¨ã«ã‚ˆã‚Šã€çŠ¶æ…‹ãŒå¤‰ã‚ã£ã¦ã„ã‚‹ã“ã¨ãŒåˆ†ã‹ã‚Šã¾ã™ã€‚Changes to be committed ã¨ã—ã¦åˆ—æŒ™ã•ã‚Œã‚‹å½¢ã«ãªã‚Šã¾ã—ãŸã€‚ã‚¤ãƒ³ãƒ‡ã‚¯ã‚¹ã«ç™»éŒ²ã•ã‚ŒãŸã“ã¨ã«ã‚ˆã‚Šã€commit ã§ãƒªãƒã‚¸ãƒˆãƒªã«ç™»éŒ²ã™ã‚‹å¯¾è±¡ã¨ã•ã‚ŒãŸè¨³ã§ã™ã€‚## æ­´å²ã®è¨˜éŒ²ã‚¤ãƒ³ãƒ‡ã‚¯ã‚¹ã«ç™»éŒ² (ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ³ã‚°) ã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ« (é”) ã‚’å®Ÿéš›ã«ãƒªãƒã‚¸ãƒˆãƒªã®æ­´å²ã¨ã—ã¦è¨˜éŒ²ã™ã‚‹ãŸã‚ã®ã‚³ãƒãƒ³ãƒ‰ã¨ã—ã¦ git commit ã¨ã„ã†ã‚³ãƒãƒ³ãƒ‰ãŒç”¨æ„ã•ã‚Œã¦ã„ã¾ã™ã€‚å®Ÿè¡Œã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚    $ git commit -m 'Initial commit'    [master (root-commit) bb4da8e] Initial commit     0 files changed     create mode 100644 README.mdgit commit ã«æŒ‡å®šã—ã¦ã„ã‚‹ -m ã¨ã„ã†ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã¯ commit log ã‚’ã‚³ãƒãƒ³ãƒ‰ã§æŒ‡å®šã™ã‚‹ãŸã‚ã®ã‚‚ã®ã§ã™ã€‚ã“ã® Tutorial ã§ã¯ç°¡æ˜“ãª commit log ã‚’æ­´å²ã«è¨˜éŒ²ã™ã‚‹å½¢ã‚’å–ã£ã¦ã„ã¾ã™ãŒã€å®Ÿéš›ã«ä½¿ã£ã¦ã„ãå ´åˆã«ã¯ã“ã‚ŒãŒéå¸¸ã«å¤§åˆ‡ãªæƒ…å ±ã«ãªã‚Šã¾ã™ã®ã§ã€è‰²ã€…ãªä½œæ³•ã«å¾“ã£ã¦è¨˜éŒ²ã‚’ã™ã‚‹ã‚ˆã†ã«ã—ãŸæ–¹ãŒè‰¯ã„ã§ã—ã‚‡ã†ã€‚ã¡ãªã¿ã« -m ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’çœç•¥ã™ã‚‹ã¨ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ vi ãŒèµ·å‹•ã—ã€ä»¥ä¸‹ãªè¡¨ç¤ºã«ãªã‚Šã¾ã™ã€‚    # Please enter the commit message for your changes. Lines starting    # with '#' will be ignored, and an empty message aborts the commit.    # On branch master    #    # Initial commit    #    # Changes to be committed:    #   (use "git rm --cached <file>..." to unstage)    #    #       new file:   README.md    #commit log ã®æ›¸ãæ–¹ã«ã¤ã„ã¦ã¯ Linux Kernel ã«ãŠã‘ã‚‹ä½œæ³•ã‚’ç­†é ­ã«ã€æ§˜ã€…ãªæ„è¦‹ãŒã‚ã‚Šã¾ã™ã®ã§ã€ãã‚Œã‚‰ã‚’èª¿ã¹ã¦ã¿ã¦ä¸‹ã•ã„ã€‚ã¾ãŸã€commit ç›´å¾Œã®çŠ¶æ…‹ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚    $ git status    # On branch master    nothing to commit (working directory clean)å½“ç„¶ã§ã™ãŒã€commit å¾Œã€ä½•ã®å¤‰åŒ–ã‚‚ã‚ã‚Šã¾ã›ã‚“ã€ã¨ã„ã†æ„å‘³ã«ãªã‚Šã¾ã™ã€‚## commit log ã®ç¢ºèªæ­´å²ã¨ãã“ã«è¨˜éŒ²ã•ã‚ŒãŸ commit log ã‚’ç¢ºèªã™ã‚‹ãŸã‚ã®ã‚³ãƒãƒ³ãƒ‰ãŒ git log ã§ã™ã€‚æ—©é€Ÿç¢ºèªã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚    $ git log    commit bb4da8eecdd143c845c68edac7bc47269a48799d    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>    Date:   Sat Sep 7 14:41:59 2013 +0900            Initial commitã¾ã ä¸€ã¤ã ã‘ã§ã™ãŒã€ç¢ºã‹ã«æ­´å²ã«è¨˜éŒ²ã•ã‚Œã¦ã„ã‚‹ã“ã¨ãŒåˆ†ã‹ã‚Šã¾ã™ã€‚commit ã¨ã„ã†æ–‡å­—åˆ—ã®å³ã«å‡ºåŠ›ã•ã‚Œã¦ã„ã‚‹ã®ãŒã“ã® commit object ã‚’ç¤ºã™ hash key ã¨ãªã‚Šã¾ã™ã€‚git ã®ã‚³ãƒãƒ³ãƒ‰ã«ãŠã„ã¦ã“ã® hash key ã‚’ä½¿ç”¨ã—ã¦ commit object ã‚’æŒ‡ã™ã“ã¨ãŒã§ãã¾ã™ã€‚ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã™ã‚‹ã“ã¨ã‚„    $ git log README.mdå·®åˆ†ã‚’å‡ºåŠ›ã™ã‚‹ã“ã¨ã‚‚å¯èƒ½ã§ã™ã€‚    $ git log -pä½µç”¨ã‚‚å¯èƒ½ã§ã™ã€‚    $ git log -p README.md## å¤‰æ›´å·®åˆ†ã®ç¢ºèªgit diff ã‚³ãƒãƒ³ãƒ‰ã«ã‚ˆã£ã¦å¤‰æ›´å·®åˆ†ã®ç¢ºèªãŒå¯èƒ½ã§ã™ã€‚ã¨ã‚Šã‚ãˆãš README.md ã®ä¸­èº«ãŒç©ºã§ã¯ã„ã‘ã¾ã›ã‚“ã®ã§å†…å®¹ã‚’è¿½åŠ ã—ã¾ã™ã€‚    $ echo '# Git Tutorial' >README.md    $ cat README.md    # Git TutorialçŠ¶æ…‹ã‚’ç¢ºèªã—ã¦ã¿ã¾ã™ã€‚    $ git status    # On branch master    # Changes not staged for commit:    #   (use "git add <file>..." to update what will be committed)    #   (use "git checkout -- <file>..." to discard changes in working directory)    #    #       modified:   README.md    #    no changes added to commit (use "git add" and/or "git commit -a")git diff ã®ã¿ã€ã®å ´åˆã¯ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ³ã‚°ã•ã‚Œã¦ã„ãªã„ãƒ¯ãƒ¼ã‚¯ãƒ„ãƒªãƒ¼ã®å¤‰æ›´å·®åˆ†ãŒå‡ºåŠ›ã•ã‚Œã¾ã™ã€‚    $ git diff    diff --git a/README.md b/README.md    index e69de29..f6cfe9a 100644    --- a/README.md    +++ b/README.md    @@ -0,0 +1 @@    +# Git Tutorialã§ã¯ git add ã§å¤‰æ›´ã‚’å…¨ã¦ã‚¤ãƒ³ãƒ‡ã‚¯ã‚¹ã«ç™»éŒ² (ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ³ã‚°) ã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚    $ git add README.mdã¾ãšçŠ¶æ…‹ã‚’ç¢ºèªã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚    git status    # On branch master    # Changes to be committed:    #   (use "git reset HEAD <file>..." to unstage)    #    #       modified:   README.md    #ã‚¤ãƒ³ãƒ‡ã‚¯ã‚¹ã«ç™»éŒ²ã•ã‚ŒãŸã“ã¨ãŒåˆ†ã‹ã‚Šã¾ã™ã€‚ã§ã¯ git diff ã‚’ç¢ºèªã—ã¦ã¿ã¾ã™ã€‚    $ git diff    $git diff ã¯ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ³ã‚°ã•ã‚Œã¦ã„ãªã„ãƒ¯ãƒ¼ã‚¯ãƒ„ãƒªãƒ¼ã®å¤‰æ›´å·®åˆ†ã®å‡ºåŠ›ã€ã§ã—ãŸã®ã§ä½•ã‚‚å‡ºåŠ›ã•ã‚Œãªã„ã®ã¯å½“ç„¶ã§ã™ã­ã€‚ã‚¤ãƒ³ãƒ‡ã‚¯ã‚¹ã¨æœ€æ–° commit ã®å·®åˆ†ã‚’å‡ºåŠ›ã™ã‚‹ãŸã‚ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚‚ç”¨æ„ã•ã‚Œã¦ã„ã¾ã™ã€‚    $ git diff --cached    diff --git a/README.md b/README.md    index e69de29..f6cfe9a 100644    --- a/README.md    +++ b/README.md    @@ -0,0 +1 @@    +# Git Tutorialã‚ã‚‹ã„ã¯ãƒ¯ãƒ¼ã‚¯ãƒ„ãƒªãƒ¼ã¨æœ€æ–° commit ã®å·®åˆ†ã®ç¢ºèªã‚‚ã§ãã¾ã™ã€‚    $ git diff HEAD    diff --git a/README.md b/README.md    index e69de29..f6cfe9a 100644    --- a/README.md    +++ b/README.md    @@ -0,0 +1 @@    +# Git Tutorialå‡ºåŠ›ã¯åŒã˜ãªã®ã§ã™ãŒã€æ„å‘³åˆã„ã«å¾®å¦™ãªé•ã„ãŒã‚ã‚‹äº‹ã‚’ç†è§£ã—ã¦é ‚ã‘ã‚Œã°ã¨æ€ã„ã¾ã™ã€‚commit ã§ç™»éŒ²ã•ã‚Œã‚‹æƒ…å ±ãŒç¢ºèªã§ãã¾ã—ãŸã®ã§ã€commit ã—ã¦æ­´å²ã‚’ã™ã™ã‚ã¦ã¿ã¾ã™ã€‚    $ git commit -m 'Add Title'    master 6104d27] Add Title     1 file changed, 1 insertion(+)è«¸ã€…ã®çŠ¶æ…‹ã‚’ç¢ºèªã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚ã¾ãš git log ã‹ã‚‰ã€‚    $ git log    commit 6104d273c936740836d38f1621e1ab6e1de4d72d    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>    Date:   Sat Sep 7 15:14:39 2013 +0900            Add Title        commit bb4da8eecdd143c845c68edac7bc47269a48799d    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>    Date:   Sat Sep 7 14:41:59 2013 +0900            Initial commitæ­´å²ãŒä¸€ã¤ã™ã™ã‚ã‚‰ã‚Œã¦ã„ã‚‹äº‹ãŒåˆ†ã‹ã‚Šã¾ã™ã­ã€‚æ¬¡ã« status ã¯ã©ã†ã‹ã€‚    $ git status    # On branch master    nothing to commit (working directory clean)commit ã‚’ä½œæˆã—ãŸã°ã‹ã‚Šã®çŠ¶æ…‹ã¨ã„äº‹ãŒåˆ†ã‹ã‚Šã¾ã™ã€‚git diff ãªã©ã‚‚ç¢ºèªã—ã¦ã¿ã¦ä¸‹ã•ã„ã€‚## branchGit ã®ç‰¹å¾´ã¨ã—ã¦ branch ã®ä½œæˆã‚„ branch ã§å¤‰æ›´ã•ã‚ŒãŸä¿®æ­£ã‚’ merge ã™ã‚‹ã“ã¨ãŒéå¸¸ã«ç°¡å˜ã§ã‚ã‚‹äº‹ãŒæŒ™ã’ã‚‰ã‚Œã¾ã™ã€‚ä½œæ¥­ã®æ–¹æ³•ã¨ã—ã¦ branch ã‚’ä½œæˆã—ã¦å¤‰æ›´ã‚’ç››ã‚Šè¾¼ã‚“ã ä¸Šã§è©¦é¨“ãªã©ã‚’è¡Œãªã„ã€master branch ã« merge ã‚’ã—ã¦ã„ãå½¢ãŒä¸€èˆ¬çš„ã§ã™ã€‚ã¾ãŸã€branch ã§è¡Œãªã£ãŸå¤‰æ›´ã¯ä»–ã® branch ã«å½±éŸ¿ã—ã¾ã›ã‚“ã€‚ã“ã†ã—ãŸä»•çµ„ã¿ã‚’ä¸Šæ‰‹ã«æ´»ç”¨ã§ãã‚Œã°åŠ¹ç‡çš„ã«åŒæ™‚ä¸¦è¡Œã—ãŸé–‹ç™ºã‚’è¤‡æ•°ã®äººã‚„å ´æ‰€ã§è¡Œãªã£ã¦ã„ãã“ã¨ãŒå¯èƒ½ã¨ãªã‚Šã¾ã™ã€‚ã“ã“ã§ã¯ã“ã® branch ã«é–¢ã™ã‚‹æ“ä½œã®æ–¹æ³•ã‚’è©¦ã—ã¦ã„ãã¾ã™ã€‚branch ã®ä¸€è¦§ã®è¡¨ç¤ºã¨ç¾åœ¨ä½œæ¥­ä¸­ã® branch ã‚’ç¢ºèªã™ã‚‹ãŸã‚ã®ã‚³ãƒãƒ³ãƒ‰ã¨ã—ã¦ git branch ã¨ã„ã†ã‚³ãƒãƒ³ãƒ‰ãŒã‚ã‚Šã¾ã™ã€‚ç¢ºèªã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚    $ git branch    * masterç¾çŠ¶ã§ã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ç”¨æ„ã•ã‚Œã‚‹ master ã¨ã„ã† branch ã®ã¿ãŒå­˜åœ¨ã—ã¦ã„ã‚‹çŠ¶æ…‹ã§ã€ã‹ã¤ãã“ã§ä½œæ¥­ä¸­ã€ã¨ã„ã†äº‹ãŒåˆ†ã‹ã‚Šã¾ã™ã€‚branch ã®åå‰ã®å·¦å´ã« '*' ãŒè¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ branch ãŒç¾åœ¨ä½œæ¥­ä¸­ã€ã¨ã„ã†æ„å‘³ã§ã™ã€‚ã§ã¯å®Ÿéš›ã« branch ã‚’ä½œæˆã—ã¦ãã“ã§ä½œæ¥­ã‚’ã—ã¦ã¿ã‚‹ã“ã¨ã«ã—ã¾ã™ã€‚ä»¥ä¸‹ã®ã‚³ãƒãƒ³ãƒ‰ãŒã‚ˆãä½¿ã‚ã‚Œã¾ã™ã€‚    $ git checkout -b feature-A    Switched to a new branch 'feature-A'ã“ã“ã§ã¯ feature-A ã¨ã„ã† branch ã‚’æ–°è¦ä½œæˆã—ã¦ãã® branch ã«ç§»å‹•ã—ã¾ã—ãŸã€‚ç¢ºèªã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚    $ git branch    * feature-A      masterçŠ¶æ…‹ãŒå¤‰ã‚ã£ã¦ã„ã‚‹ã®ãŒåˆ†ã‹ã‚Šã¾ã™ã­ã€‚ã“ã®çŠ¶æ…‹ã§ git add ã‚„ git commit ãªã©ã§æ­´å²ã‚’ã™ã™ã‚ã‚‹ã¨ feature-A ã¨ã„ã† branch ã«å¯¾ã—ã¦è¨˜éŒ²ã•ã‚Œã¾ã™ã€‚é€†ã«è¨€ã†ã¨ master ã®æ­´å²ã¯ãã®ã¾ã¾ã¨ãªã‚Šã¾ã™ã€‚README.md ã«ä¸€è¡Œè¿½åŠ ã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚    $ vi README.md    $ cat README.md    # Git Tutorial        - feature-Aã§ã€ã“ã®å¤‰æ›´å·®åˆ†ã‚’ã‚¤ãƒ³ãƒ‡ã‚¯ã‚¹ã«è¿½åŠ ã—ã€commit ã‚’ä½œã‚Šã¾ã™ã€‚    $ git add README.md    $ git commit -m 'Add feature-A'    [feature-A 720c978] Add feature-A     1 file changed, 2 insertions(+)ã“ã®ä¿®æ­£ãŒ master branch ã«ã¯ä¸€åˆ‡å½±éŸ¿ã—ã¦ã„ãªã„ã“ã¨ã‚’ç¢ºèªã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚ã¾ãšã€master branch ã«ç§»å‹•ã—ã¾ã™ã€‚ãã†ã„ãˆã° branch ã®ç§»å‹•ã®æ–¹æ³•ã«ã¤ã„ã¦ç´¹ä»‹ã™ã‚‹ã®ã¯ã“ã‚ŒãŒå§‹ã‚ã¦ã§ã™ã­ã€‚git checkout ã¨ã„ã†ã‚³ãƒãƒ³ãƒ‰ã‚’ä½¿ã„ã¾ã™ã€‚    $ git checkout master    Switched to branch 'master'README.md ã®ä¸­èº«ç¢ºèªã€‚    $ cat README.md    # Git Tutorialã‚ã‚‹ã„ã¯æ­´å²ã®ç¢ºèªã€‚    $ git log    commit 6104d273c936740836d38f1621e1ab6e1de4d72d    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>    Date:   Sat Sep 7 15:14:39 2013 +0900            Add Title        commit bb4da8eecdd143c845c68edac7bc47269a48799d    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>    Date:   Sat Sep 7 14:41:59 2013 +0900            Initial commitfeature-A branch ã«æˆ»ã£ã¦ã¿ã¾ã™ã€‚ç§»å‹•å…ˆã« '-' ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ã§ä¸€ã¤å‰ã® current branch ã«ç§»å‹•ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚    $ git checkout -    Switched to branch 'feature-A'ãƒ­ã‚°ãŠã‚ˆã³ãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’ç¢ºèªã—ã¦ã¿ã¦ãã ã•ã„ã€‚## mergeã§ã¯ã€feature branch ã§ã®ä½œæ¥­ã¯å®Œäº†ã€ã¨ã„ã†äº‹ã«ã—ã¦ã€ã“ã® branch ã«ç››ã‚Šè¾¼ã‚“ã ä¿®æ­£ã‚’ master branch ã« merge ã—ã¾ã—ã‚‡ã†ã€‚ã¾ãšçµ±åˆã™ã‚‹ master branch ã«ç§»å‹•ã—ã¾ã™ã€‚    $ git checkout master    Switched to branch 'master'feature-A ã‚’ merge ã—ã¾ã—ã‚‡ã†ã€‚    $ git merge feature-A --no-ffã™ã‚‹ã¨ vi ãŒèµ·å‹•ã•ã‚Œã¦ä»¥ä¸‹ãªè¡¨ç¤ºã¨ãªã£ãŸã¯ãšã§ã™ã€‚    Merge branch 'feature-A'        # Please enter a commit message to explain why this merge is necessary,    # especially if it merges an updated upstream into a topic branch.    #    # Lines starting with '#' will be ignored, and an empty message aborts    # the commit.ã“ã“ã§ã¯æœ‰ç„¡ã‚’è¨€ã‚ã•ãš :wq ã§è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹å†…å®¹ã‚’ä¿å­˜ã—ã¦ vi ã‚’çµ‚äº†ã—ã¾ã™ã€‚å†…å®¹ã‚’æ›¸æ›ãˆã‚‹å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚çµ‚äº†å¾Œã€ä»¥ä¸‹ãªå‡ºåŠ›ãŒç¢ºèªã§ãã‚‹ã¨æ€ã„ã¾ã™ã€‚    Merge made by the 'recursive' strategy.     README.md | 2 ++     1 file changed, 2 insertions(+)ã“ã®å‡ºåŠ›ã¯ã€æ­£å¸¸ã« merge ãŒå®Œäº†ã—ã¾ã—ãŸã€ã¨ã„ã†æ„å‘³ã«ãªã‚Šã¾ã™ã€‚ã¡ã‚‡ã£ã¨å¤‰ã‚ã£ãŸå½¢ã§ãƒ­ã‚°ã‚’ç¢ºèªã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚    $ git log --graph    *   commit 439e6372567238254ab93142df419cb59d660f58    |\  Merge: 6104d27 720c978    | | Author: YAMANE Toshiaki <yamanetoshi@gmail.com>    | | Date:   Sat Sep 7 15:40:40 2013 +0900    | |     | |     Merge branch 'feature-A'    | |       | * commit 720c978cf5e303fd539d7605d4b6e9c576bcf71f    |/  Author: YAMANE Toshiaki <yamanetoshi@gmail.com>    |   Date:   Sat Sep 7 15:31:59 2013 +0900    |       |       Add feature-A    |      * commit 6104d273c936740836d38f1621e1ab6e1de4d72d    | Author: YAMANE Toshiaki <yamanetoshi@gmail.com>    | Date:   Sat Sep 7 15:14:39 2013 +0900    |     |     Add Title    |      * commit bb4da8eecdd143c845c68edac7bc47269a48799d      Author: YAMANE Toshiaki <yamanetoshi@gmail.com>      Date:   Sat Sep 7 14:41:59 2013 +0900                Initial commitbranch ã—ã¦åˆ†å²ã—ã€çµ±åˆã•ã‚Œã¦ã„ã‚‹æ§˜å­ãŒç¢ºèªã§ãã¾ã™ã­ã€‚## resetGit ã§ã¯æ­´å²ã®æ“ä½œã‚’æŸ”è»Ÿã«è¡Œãªã†ã“ã¨ãŒã§ãã¾ã™ã€‚ã“ã“ã§ã¯å…ˆã«ä½œæˆã—ãŸ feature-A ã‚’ä½œã£ã¦ merge ã™ã‚‹ã€ã¨ã„ã†æ­´å²ã‚’å·»æˆ»ã—ã¦ Fix-B ã¨ã„ã†ãƒˆãƒ”ãƒƒã‚¯ãƒ–ãƒ©ãƒ³ãƒã‚’ä½œæˆã—ã¦ merge ã—ãŸå¾Œã«ã€å†åº¦ feature-A ãŠã‚ˆã³ master ã¨ã® merge æ“ä½œã‚’å¾©å¸°ã•ã›ã¦ Fix-B ã¨ merge ã™ã‚‹ã¨ã„ã†å½¢ã§æ­´å²ã‚’ä¿®æ­£ã—ã¦ã¿ã¾ã™ã€‚æ­´å²ã‚’æˆ»ã—ã¦ Fix-B branch ã‚’è¿½åŠ     feature-A       o                   / \    master    o---o---o                  \    Fix-B          ofeature-A ã®æ“ä½œã‚’å–ã‚Šæ¶ˆã—ã¦ Fix-B branch ã®è¿½åŠ     master    o---o                  \    Fix-B          oFix-B è¿½åŠ å¾Œã¯ä»¥ä¸‹ã®çŠ¶æ…‹ã‚’ç›®æŒ‡ã™    feature-A       o                   / \    master    o---o---o---o                  \      /    Fix-B          o-----ã§ã¯ã‚„ã£ã¦ã¿ã¾ã—ã‚‡ã†ã€‚ã¾ãšç¾çŠ¶ã‚’ç¢ºèªã—ã¾ã™ã€‚    $ git log --pretty    commit 439e6372567238254ab93142df419cb59d660f58    Merge: 6104d27 720c978    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>    Date:   Sat Sep 7 15:40:40 2013 +0900            Merge branch 'feature-A'        commit 720c978cf5e303fd539d7605d4b6e9c576bcf71f    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>    Date:   Sat Sep 7 15:31:59 2013 +0900            Add feature-A        commit 6104d273c936740836d38f1621e1ab6e1de4d72d    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>    Date:   Sat Sep 7 15:14:39 2013 +0900            Add Title        commit bb4da8eecdd143c845c68edac7bc47269a48799d    Author: YAMANE Toshiaki <yamanetoshi@gmail.com>    Date:   Sat Sep 7 14:41:59 2013 +0900            Initial commitAdd Title ãª commit ã¾ã§å·»æˆ»ã—ã¾ã™ã€‚    $ git reset --hard 6104d273    HEAD is now at 6104d27 Add Titleãã®å¾Œã€Fix-B ãª branch ã‚’ä½œæˆã—ã¾ã™ã€‚    $ git checkout -b Fix-B    Switched to a new branch 'Fix-B'README.md ã®ä¸­èº«ã‚’ä»¥ä¸‹ã«ã—ã¾ã™ã€‚    $ cat README.md    # Git Tutorial        - Fix-Bcommit ã‚’ä½œã£ã¦ã—ã¾ã„ã¾ã™ã€‚çŠ¶æ…‹ãªã©ã€ç¢ºèªã—ãªãŒã‚‰ã™ã™ã‚ã¦ã¿ã¦ä¸‹ã•ã„ã€‚    $ git add README.md    $ git commit -m 'Fix B'    [Fix-B 0bd9388] Fix B     1 file changed, 3 insertions(+)ã“ã®æ™‚ç‚¹ã§æ­´å²ã¯ã“ã†ãªã£ã¦ã„ã‚‹ã¯ãšã§ã™ã€‚    master    o---o                  \    Fix-B          oã“ã“ã‹ã‚‰ä»¥ä¸‹ã‚’ç›®æŒ‡ã—ã¾ã™ã€‚    feature-A       o                   / \    master    o---o---o---o                  \      /    Fix-B          o-----ã¾ãš feature-A ã‚’ merge ã—ãŸçŠ¶æ…‹ã‚’å¾©å…ƒã—ã¾ã™ã€‚git reflog ã¨ã„ã†ã‚³ãƒãƒ³ãƒ‰ã®å‡ºåŠ›ã‚’ç¢ºèªã—ã¦ã¿ã¦ä¸‹ã•ã„ã€‚    $ git reflog    0bd9388 HEAD@{0}: commit: Fix B    6104d27 HEAD@{1}: checkout: moving from master to Fix-B    6104d27 HEAD@{2}: reset: moving to 6104d273    439e637 HEAD@{3}: merge feature-A: Merge made by the 'recursive' strategy.    6104d27 HEAD@{4}: checkout: moving from feature-A to master    720c978 HEAD@{5}: checkout: moving from master to feature-A    6104d27 HEAD@{6}: checkout: moving from feature-A to master    720c978 HEAD@{7}: commit: Add feature-A    6104d27 HEAD@{8}: checkout: moving from master to feature-A    6104d27 HEAD@{9}: commit: Add Title    bb4da8e HEAD@{10}: commit (initial): Initial commitã“ã“ã«å‡ºåŠ›ã•ã‚Œã¦ã„ã‚‹ hash key ã¨ git reset --hard ã‚³ãƒãƒ³ãƒ‰ã§å¾©å…ƒãŒå¯èƒ½ã§ã™ã€‚ã“ã®è¨˜éŒ²ã¯ git gc ã—ãªã„é™ã‚Šæœ‰åŠ¹ã§ã™ã€‚æ—©é€Ÿå¾©å…ƒã—ã¦ã¿ã¾ã™ã€‚    $ git checkout master    $ git reset --hard 439e637    HEAD is now at 439e637 Merge branch 'feature-A'ç¾çŠ¶ã€ä»¥ä¸‹ãªçŠ¶æ…‹ã«ãªã£ã¦ã„ã‚‹ã¯ãšã§ã™ã€‚    feature-A       o                   / \    master    o---o---o                  \    Fix-B          o## ç«¶åˆã®è§£æ±ºã“ã“ã§ Fix-B branch ã‚’ merge ã™ã‚Œã°ã‚´ãƒ¼ãƒ«ã§ã™ã€‚æ—©é€Ÿå®Ÿè¡Œã—ã¦ã¿ã¾ã™ã€‚    $ git merge Fix-B --no-ff    Auto-merging README.md    CONFLICT (content): Merge conflict in README.md    Automatic merge failed; fix conflicts and then commit the result.CONFLICT ã¨å‡ºåŠ›ã•ã‚Œã¦ã„ã¾ã™ã€‚feature-A ã®å¤‰æ›´ã¨ Fix-B ã®å¤‰æ›´ãŒç«¶åˆã—ãŸã‚ˆã†ã§ã™ã€‚README.md ã®ä¸­èº«ã‚’ç¢ºèªã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚    $  cat README.md     # Git Tutorial        <<<<<<< HEAD    - feature-A    =======    - Fix-B        >>>>>>> Fix-BHEAD ã®çŠ¶æ…‹ãŒ <<<<<<< HEAD ã‹ã‚‰ ======= ã¾ã§ã§ Fix-B ã®çŠ¶æ…‹ãŒ ======= ã‹ã‚‰ >>>>>>> Fix-B ã¾ã§ã«ãªã‚Šã¾ã™ã€‚ã‚¨ãƒ‡ã‚£ã‚¿ã§æœ¬æ¥ã‚ã‚‹ã¹ãçŠ¶æ…‹ã«ä¿®æ­£ã—ã¾ã™ã€‚    $ cat README.md    # Git Tutorial        - feature-A    - Fix-Bç«¶åˆãŒè§£æ±ºã—ãŸã®ã§å¾Œå§‹æœ«ã‚’ã—ã¦ãŠãã¾ã™ã€‚    $ git add README.md    $ git commit -m 'Fix conflict'    [master 8147c96] Fix conflict## commit log ã®ä¿®æ­£ç›´å‰ã® commit log ã‚’ä¿®æ­£ã™ã‚‹ã«ã¯ git commit --amend ã‚³ãƒãƒ³ãƒ‰ã‚’ä½¿ã„ã¾ã™ã€‚å…ˆç¨‹ã®æ“ä½œã§ Fix conflict ã¨ã—ã¦ã„ã¾ã—ãŸãŒã€æœ¬æ¥ã¯ Fix-B ã® merge ã§ã™ã€‚ä¿®æ­£ã—ã¦ã¿ã¾ã™ã€‚    $ git commit --amendã“ã‚Œã§ vi ãŒèµ·å‹•ã•ã‚Œä»¥ä¸‹ã®è¡¨ç¤ºã¨ãªã‚‹ã¯ãšã§ã™ã€‚    Fix conflict        # Please enter the commit message for your changes. Lines starting    # with '#' will be ignored, and an empty message aborts the commit.    # On branch master    # Changes to be committed:    #   (use "git reset HEAD^1 <file>..." to unstage)    #    #       modified:   README.md    #commit log ã®éƒ¨åˆ†ã‚’ Merge branch 'Fix-B' ã¨ä¿®æ­£ã—ã¦ã‚¨ãƒ‡ã‚£ã‚¿ã‚’çµ‚äº†ã—ã¾ã—ã‚‡ã†ã€‚ä»¥ä¸‹ãªå‡ºåŠ›ãŒç¢ºèªã§ãã‚‹ã¨æ€ã„ã¾ã™ã€‚    [master a2692bb] Merge branch 'Fix-B'git log ã§ç¢ºèªã‚’ã—ã¦ãŠã„ã¦ä¸‹ã•ã„ã€‚## æ­´å²ã®æ”¹å¤‰ãƒˆãƒ”ãƒƒã‚¯ãƒ–ãƒ©ãƒ³ãƒã‚’ merge ã™ã‚‹å‰ã« merge å¯¾è±¡ã¨ãªã‚‹ commit ã«ä½•ã‚‰ã‹ã®ãƒŸã‚¹ã‚’è¦‹ã¤ã‘ã¦ã—ã¾ã£ãŸã‚ˆã†ãªå ´åˆã€ä¿®æ­£ commit ã‚’ä½œã£ã¦æ­´å²ã‚’æ”¹å¤‰ã—ã¦ã—ã¾ã†ã‚ˆã†ãªæ–¹æ³•ãŒã‚ã‚Šã¾ã™ã€‚ã‚ã‚‹ã„ã¯ Github ã§ PR (Pull Request) ã™ã‚‹æ™‚ã« PR ãª branch ã«å«ã¾ã‚Œã‚‹ commit ã‚’ä¸€ã¤ã«çºã‚ã¦ã—ã¾ã†ã‚ˆã†ãªå ´åˆã«ã‚‚åŒæ§˜ã®ãƒ†ã‚¯ãƒ‹ãƒƒã‚¯ãŒä½¿ã‚ã‚Œã¾ã™ã€‚ã¨ã‚Šã‚ãˆãšæ–°ãŸãªãƒˆãƒ”ãƒƒã‚¯ãƒ–ãƒ©ãƒ³ãƒã‚’ä½œæˆã—ã¾ã™ã€‚    $ git checkout -b feature-C    Switched to a new branch 'feature-C'README.md ã‚’ä»¥ä¸‹ã®ã‚ˆã†ã«å¤‰æ›´ã—ã¾ã™ã€‚    $ cat README.md    # Git Tutorial        - feature-A    - Fix-B    - feature-CCC    ã“ã®ä¿®æ­£ã® commit ã‚’ä½œæˆã—ã¦ãŠã„ã¦ä¸‹ã•ã„ã€‚ã‚ã¾ã‚ŠãŠã™ã™ã‚ã¯ã—ã¾ã›ã‚“ãŒã€ä»¥ä¸‹ãªæ–¹æ³•ã‚‚ä½¿ãˆã¾ã™ã€‚    $ git commit -am 'Add feature-C'    [feature-C 3ee3bdf] Add feature-C     1 file changed, 1 insertion(+)å®Ÿã¯è¿½åŠ ã—ãŸ    - feature-CCCã¯æ•…æ„ã«ã“ã†ã—ãŸã®ã§ã™ãŒã€æ­£ã—ãã¯    - feature-Cã§ã™ã€‚ä¿®æ­£ã—ã¦ãŠã„ã¦ä¸‹ã•ã„ã€‚ä¿®æ­£å¾Œã®å·®åˆ†ã¯ä»¥ä¸‹ã¨ãªã‚Šã¾ã™ã€‚    $ git diff    diff --git a/README.md b/README.md    index 61ac2c4..027d69a 100644    --- a/README.md    +++ b/README.md    @@ -2,5 +2,5 @@          - feature-A     - Fix-B    -- feature-CCC    +- feature-C     commit ã‚’ä½œã£ã¦ãŠãã¾ã—ã‚‡ã†ã€‚    $ git commit -am 'Fix typo'    [feature-C 7a9c87e] Fix typo     1 file changed, 1 insertion(+), 1 deletion(-)ã“ã® Fix typo ãª commit ã¯ã§ãã‚Œã°æ®‹ã—ã¦ãŠããŸãã¯ãªã„ã®ã§ã€æ­´å²ã‚’æ”¹ç«„ã—ã¾ã™ã€‚    $ git rebase -i HEAD~2HEAD~2 ã¯ HEAD å«ã‚äºŒã¤åˆ†ã® commit ã‚’å¯¾è±¡ã¨ã™ã‚‹ã€ã¨ã„ã†æ„å‘³ã«ãªã‚Šã¾ã™ã€‚ã“ã®ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã¨ vi ãŒèµ·å‹•ã—ã¦ä»¥ä¸‹ãŒè¡¨ç¤ºã•ã‚Œã‚‹ã§ã—ã‚‡ã†ã€‚    pick 63d6760 Add feature-C    pick 7a9c87e Fix typo        # Rebase a2692bb..7a9c87e onto a2692bb    #    # Commands:    #  p, pick = use commit    #  r, reword = use commit, but edit the commit message    #  e, edit = use commit, but stop for amending    #  s, squash = use commit, but meld into previous commit    #  f, fixup = like "squash", but discard this commit's log message    #  x, exec = run command (the rest of the line) using shell    #    # These lines can be re-ordered; they are executed from top to bottom.    #    # If you remove a line here THAT COMMIT WILL BE LOST.    # However, if you remove everything, the rebase will be aborted.    #    # Note that empty commits are commented outFix typo ãª commit ã®è¡Œã®å…ˆé ­ã‚’ fixup æ‰±ã„ã¨ã—ã¾ã™ã€‚å³å´ã«è¨˜è¿°ã•ã‚Œã¦ã„ã‚‹é€šã‚Šã€å¤‰æ›´ã¯ç››ã‚Šè¾¼ã‚€ãŒ commit log ã‚’ç ´æ£„ã€ã¨ã„ã†æ„å‘³ã«ãªã‚Šã¾ã™ã€‚    pick 63d6760 Add feature-C    f 7a9c87e Fix typoã“ã‚Œã§ã‚¨ãƒ‡ã‚£ã‚¿ã‚’çµ‚äº†ã—ã¾ã—ã‚‡ã†ã€‚ä»¥ä¸‹ãªå‡ºåŠ›ãŒç¢ºèªã§ãã‚‹ã¨æ€ã„ã¾ã™ã€‚    [detached HEAD c1e48cb] Add feature-C     1 file changed, 1 insertion(+)    Successfully rebased and updated refs/heads/feature-C.git log ã‚„ README.md ã®å†…å®¹ã‚‚ç¢ºèªã—ã¦ãŠã„ã¦ä¸‹ã•ã„ã€‚å•é¡Œç„¡ã„ã‚ˆã†ã§ã‚ã‚Œã°ã“ã® branch ã‚‚ master ã« merge ã—ã¦ãŠãã¾ã—ã‚‡ã†ã€‚    $ git checkout master    Switched to branch 'master'    $ git merge feature-C --no-ff    Merge made by the 'recursive' strategy.     README.md | 1 +     1 file changed, 1 insertion(+)## ãƒªãƒ¢ãƒ¼ãƒˆãƒªãƒã‚¸ãƒˆãƒªã“ã‚Œã¾ã§ãƒ­ãƒ¼ã‚«ãƒ«ã®ã¿ã®æ“ä½œã§ã—ãŸãŒã€ãƒªãƒ¢ãƒ¼ãƒˆãƒªãƒã‚¸ãƒˆãƒªã‚’å«ã‚ãŸæ“ä½œã«ã¤ã„ã¦ã‚‚ç¢ºèªã‚’ã—ã¦ãŠããŸã„ã¨æ€ã„ã¾ã™ã€‚ãƒªãƒ¢ãƒ¼ãƒˆãƒªãƒã‚¸ãƒˆãƒªã«ä½¿ã†ã®ã¯ Github ã§ã™ã€‚ã¾ãšã€Github ã®è‡ªåˆ†ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã« git-tutorial ã¨ã„ã†ãƒªãƒã‚¸ãƒˆãƒªã‚’ READE ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ãªã„å½¢ã§ä½œæˆã—ã¦ãŠã„ã¦ä¸‹ã•ã„ã€‚ä½œæˆã—ãŸãƒªãƒã‚¸ãƒˆãƒªã® URL ã¯ git@github.com:ãƒ¦ãƒ¼ã‚¶å:/git-tutorial.git ã¨ãªã£ã¦ã„ã‚‹ã¯ãšã§ã™ã€‚ã“ã‚Œã‚’ remote ã® origin ã¨ã—ã¦ç™»éŒ²ã™ã‚‹ã«ã¯ä»¥ä¸‹ã®ã‚³ãƒãƒ³ãƒ‰ã‚’ä½¿ã„ã¾ã™ã€‚ä¾¿å®œä¸Šãƒ¦ãƒ¼ã‚¶ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã¯ yamanetoshi ã‚’ä½¿ã„ã¾ã™ã€‚    $ git remote add origin git@github.com:yamanetoshi/git-tutorial.gitã“ã‚Œã§ .git/config ã«ä»¥ä¸‹ã®æƒ…å ±ãŒè¿½åŠ ã•ã‚Œã¦ã„ã‚‹ã¯ãšã§ã™ã€‚    [remote "origin"]            url = git@github.com:yamanetoshi/git-tutorial.git            fetch = +refs/heads/*:refs/remotes/origin/*ãƒªãƒ¢ãƒ¼ãƒˆãƒªãƒã‚¸ãƒˆãƒªã«ãƒ­ãƒ¼ã‚«ãƒ«ã®æƒ…å ±ã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹ã«ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ã—ã¾ã™ã€‚    $ git push -u origin master    Counting objects: 20, done.    Delta compression using up to 4 threads.    Compressing objects: 100% (8/8), done.    Writing objects: 100% (20/20), 1.60 KiB, done.    Total 20 (delta 3), reused 0 (delta 0)    To git@github.com:yamanetoshi/git-tutorial.git     * [new branch]      master -> master    Branch master set up to track remote branch master from origin.remote ã® origin ã§æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ URL ãªãƒªãƒ¢ãƒ¼ãƒˆãƒªãƒã‚¸ãƒˆãƒªã«ãƒ­ãƒ¼ã‚«ãƒ«ã® master ãƒ–ãƒ©ãƒ³ãƒã‚’ push ã—ã¾ã™ã€ã¨ã„ã†æ„å‘³ã«ãªã‚Šã¾ã™ã€‚-u ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®æ„å‘³ã¯å„è‡ªèª¿ã¹ã¦ã¿ã¦ä¸‹ã•ã„ã€‚ã¾ãŸã€Github ã®ãƒªãƒ¢ãƒ¼ãƒˆãƒªãƒã‚¸ãƒˆãƒªã®çŠ¶æ…‹ã‚‚ãƒ–ãƒ©ã‚¦ã‚¶ãªã©ã§ç¢ºèªã—ã¦ã¿ã¦ä¸‹ã•ã„ã€‚## ãƒªãƒ¢ãƒ¼ãƒˆã« branch ã‚’è¿½åŠ ãƒªãƒ¢ãƒ¼ãƒˆãƒªãƒã‚¸ãƒˆãƒªã«ã¯ master ã§ã¯ãªã„ branch ã‚‚ push å¯èƒ½ã§ã™ã€‚ä¸€ã¤ branch ã‚’æ–°è¦ã«ä½œæˆã—ã¦ã¿ã¦ãƒªãƒ¢ãƒ¼ãƒˆã« push ã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚    $ git checkout -b feature-D    Switched to a new branch 'feature-D'ä½œæˆã•ã‚ŒãŸã“ã® branch ã‚’ push ã—ã¦ã¿ã¾ã™ã€‚    $ git push -u origin feature-D    Total 0 (delta 0), reused 0 (delta 0)    To git@github.com:yamanetoshi/git-tutorial.git     * [new branch]      feature-D -> feature-D    Branch feature-D set up to track remote branch feature-D from origin.Github ä¸Šã§ feature-D branch ãŒä½œæˆã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèªã—ã¦ã¿ã¦ä¸‹ã•ã„ã€‚PR å‘ã‘ã® branch ãªã©ã‚‚ã“ã†ã—ãŸå½¢ã§ push ã—ã¦ãŠãå½¢ã«ãªã‚Šã¾ã™ã€‚## ãƒªãƒ¢ãƒ¼ãƒˆ branch ã®å–å¾—push ã—ãŸ branch ã®å–å¾—æ–¹æ³•ã§ã™ã€‚åˆ¥å ´æ‰€ã«ä½œæ¥­ç”¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æ˜ã£ã¦ãŠãã¾ã—ã‚‡ã†ã€‚    $ mkdir other-workãã—ã¦ã€clone ã—ã¦ã¿ã¾ã™ã€‚ä»¥ä¸‹ã¯ãã®ã¾ã¾ã‚³ãƒãƒ³ãƒ‰ã‚’å…¥åŠ›ã™ã‚‹ã®ã§ã¯ãªãã€è‡ªåˆ†ã®ãƒªãƒ¢ãƒ¼ãƒˆãƒªãƒã‚¸ãƒˆãƒªãŒã‚ã‚‹ URL ã«å¤‰æ›´ã—ã¦ã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œã—ã¦ãã ã•ã„ã€‚    $ git clone git@github.com:yamanetoshi/git-tutorial.git    Cloning into 'git-tutorial'...    remote: Counting objects: 20, done.    remote: Compressing objects: 100% (5/5), done.    remote: Total 20 (delta 3), reused 20 (delta 3)    Receiving objects: 100% (20/20), done.    Resolving deltas: 100% (3/3), done.git branch ã§ç¢ºèªã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚    $ git branch -a    * master      remotes/origin/HEAD -> origin/master      remotes/origin/feature-D      remotes/origin/masterå–å¾—ã ã‘ã§ã‚ã‚Œã°å˜ç´”ã« git checkout ã§å•é¡Œã‚ã‚Šã¾ã›ã‚“ã€‚    $ git checkout feature-D    Switched to a new branch 'feature-D'ã‚ã‚‹ã„ã¯åå‰ã‚’å¤‰ãˆã¦ã€ã¨ã„ã†äº‹ã§ã‚ã‚Œã°ä»¥ä¸‹ã«ãªã‚‹ã§ã—ã‚‡ã†ã‹ã€‚    $ git checkout -b new_feature origin/feature-D    Branch new_feature set up to track remote branch feature-D from origin.    Switched to a new branch 'new_feature'ã¾ãŸã€remote å´ã§æ›´æ–°ã•ã‚ŒãŸå ´åˆã¯ git fetch ã¨ã„ã†ã‚³ãƒãƒ³ãƒ‰ã§å–å¾—ã—ã€ãƒªãƒ¢ãƒ¼ãƒˆã¨ merge ã™ã‚‹äº‹ã§ãƒ­ãƒ¼ã‚«ãƒ«ã®æ›´æ–°ã‚‚å¯èƒ½ã§ã™ã€‚ã“ã®ã‚ãŸã‚Šã¯è‡ªåˆ†ã§è‰²ã€…ç¢ºèªã‚’ã—ã¦ã¿ã¦ä¸‹ã•ã„ã€‚## ãƒªãƒ¢ãƒ¼ãƒˆã® branch ã‚’å‰Šé™¤ã“ã‚Œã§æœ€å¾Œã§ã™ã€‚ãƒªãƒ¢ãƒ¼ãƒˆã«ã‚ã‚‹ branch ã®å‰Šé™¤ã®æ–¹æ³•ã§ã™ã€‚ä¾‹ãˆã° feature-D ã‚’å‰Šé™¤ã™ã‚‹å ´åˆã¯ä»¥ä¸‹ã§ã™ã€‚    $ git push origin :feature-D    To git@github.com:yamanetoshi/git-tutorial.git     - [deleted]         feature-Dã¼ãã¯ã“ã®æ–¹æ³•ã‚’ã‚ˆãå¿˜ã‚Œã‚‹ (å¾Œå¤©æ€§è¨˜æ†¶ä¸å…¨) ã®ã§ã“ã¡ã‚‰ã«æ§ãˆã•ã›ã¦é ‚ãã¾ã—ãŸã€‚## ãŠã‚ã‚Šã«ã“ã‚Œã§ãƒãƒ³ã‚ºã‚ªãƒ³ã¯çµ‚ã‚ã‚Šã§ã™ã€‚ã§ã¯çš†ã•ã‚“ã€Have a good Git(hub) life!!

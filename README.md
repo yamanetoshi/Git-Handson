@@ -1,7 +1,1 @@
-# Git Tutorial
-
-9 �����˳��Ť�ͽ�ꤷ�Ƥ��� Hands-on �˸�����˿���ή�̤��Ƥ�������򻲹ͤˤ�����ĺ����Tutorial �ʥƥ����Ȥ��Ѱդ��Ƥߤޤ��������Ƥ򸡾�ĺ����brashup �� PR ��ĺ�פǤ���й����Ǥ���
-
-�����ϰʲ��Ȥʤ�ޤ���
-
-- [tutorial.mk](./tutorial.md)
+# Git Tutorial9 月末に開催を予定している Hands-on に向けて某所で流通している資料を参考にさせて頂き、Tutorial なテキストを用意してみました。内容を検証頂き、brashup な PR を頂戴できれば幸いです。資料は以下となります。- [tutorial.mk](./tutorial.md)
