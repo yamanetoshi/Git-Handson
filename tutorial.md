@@ -129,6 +129,17 @@ commit log の書き方については Linux Kernel における作法を筆頭�
 
 当然ですが、commit 後、何の変化もありません、という意味になります。
 
+### commit log に関するポインタ
+
+以下にいくつか列挙しておきます。ご参考まで。
+
+- [git/Documentation/SubmittingPatches](https://github.com/gitster/git/blob/master/Documentation/SubmittingPatches)
+- [http://www.clear-code.com/blog/2012/2/21.html](コミットメッセージの書き方)
+- [http://www.sssg.org/blogs/hiro345/archives/11721.html](git commit時のコメントを英語で書くための最初の一歩)
+
+最低限、英語で記述するようにしましょう。
+また、良い資料があればフィードバック頂ければ幸いです。
+
 ## commit log の確認
 
 歴史とそこに記録された commit log を確認するためのコマンドが git log です。早速確認してみましょう。
