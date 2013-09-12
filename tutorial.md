@@ -748,11 +748,14 @@ git branch で確認してみましょう。
 
 ## おわりに
 
-これでハンズオンは終わりです。では皆さん、Have a good Git(hub) life!!
+これでハンズオンは終わりです。おつかれさまでした。このチュートリアルが今後のみなさんの Git な生活のお役に立つことができれば幸いです。
+
+また、これを読んだみなさんからのフィードバックをお待ちしています。リポジトリは Github に置かれています。Issue や Pull Request など、ご遠慮なくどうぞ!!
+- https://github.com/yamanetoshi/Git-Handson
+
+では皆さん、Have a good Git(hub) life!!
 
 ## 参考文献
 
 - 入門 Git 秀和システム 濱野 純
 - Github 実践入門 技術評論社 @hirocaster
-
-
