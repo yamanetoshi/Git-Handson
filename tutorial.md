@@ -134,8 +134,8 @@ commit log の書き方については Linux Kernel における作法を筆頭�
 以下にいくつか列挙しておきます。ご参考まで。
 
 - [git/Documentation/SubmittingPatches](https://github.com/gitster/git/blob/master/Documentation/SubmittingPatches)
-- [http://www.clear-code.com/blog/2012/2/21.html](コミットメッセージの書き方)
-- [http://www.sssg.org/blogs/hiro345/archives/11721.html](git commit時のコメントを英語で書くための最初の一歩)
+- [コミットメッセージの書き方](http://www.clear-code.com/blog/2012/2/21.html)
+- [git commit時のコメントを英語で書くための最初の一歩](http://www.sssg.org/blogs/hiro345/archives/11721.html)
 
 最低限、英語で記述するようにしましょう。
 また、良い資料があればフィードバック頂ければ幸いです。
