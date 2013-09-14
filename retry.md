@@ -127,13 +127,13 @@ git checkout はインデクスに登録されている状態をワークツリ�
 
 以下、順に手順を示します。
 
-- README.md を改変してみてインデクスから戻す
+README.md を改変してみてインデクスから戻す
 
     $ vi README.md
     $ git checkout README.md
     $ cat README.md
 
-- README.md を改変し、インデクスに登録してからさらに改変し、インデクスから戻す
+README.md を改変し、インデクスに登録してからさらに改変し、インデクスから戻す
 
     $ vi README.md
     $ git add README.md
@@ -141,7 +141,7 @@ git checkout はインデクスに登録されている状態をワークツリ�
     $ git checkout README.md
     $ cat README.md
 
-- README.md を改変し、インデクスに登録してからさらに改変し、HEAD の状態に戻す
+README.md を改変し、インデクスに登録してからさらに改変し、HEAD の状態に戻す
 
     $ vi README.md
     $ git add README.md
@@ -149,13 +149,13 @@ git checkout はインデクスに登録されている状態をワークツリ�
     $ git checkout HEAD README.md
     $ cat README.md
 
-- git rm README.md して git checkout README.md で回復できないことを確認
+git rm README.md して git checkout README.md で回復できないことを確認
 
     $ git rm README.md
     $ git checkout README.md
     $ git checkout HEAD README.md
 
-- git mv README.md hoge.md して git checkout README.md で回復できないことを確認
+git mv README.md hoge.md して git checkout README.md で回復できないことを確認
 
     $ git mv README.md hoge.md
     $ git checkout README.md
