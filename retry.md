@@ -130,36 +130,36 @@ git checkout はインデクスに登録されている状態をワークツリ�
 - README.md を改変してみてインデクスから戻す
 
     $ vi README.md
-	$ git checkout README.md
-	$ cat README.md
+    $ git checkout README.md
+    $ cat README.md
 
 - README.md を改変し、インデクスに登録してからさらに改変し、インデクスから戻す
 
     $ vi README.md
-	$ git add README.md
-	$ vi README.md
-	$ git checkout README.md
-	$ cat README.md
+    $ git add README.md
+    $ vi README.md
+    $ git checkout README.md
+    $ cat README.md
 
 - README.md を改変し、インデクスに登録してからさらに改変し、HEAD の状態に戻す
 
     $ vi README.md
-	$ git add README.md
-	$ vi README.md
-	$ git checkout HEAD README.md
-	$ cat README.md
+    $ git add README.md
+    $ vi README.md
+    $ git checkout HEAD README.md
+    $ cat README.md
 
 - git rm README.md して git checkout README.md で回復できないことを確認
 
     $ git rm README.md
-	$ git checkout README.md
-	$ git checkout HEAD README.md
+    $ git checkout README.md
+    $ git checkout HEAD README.md
 
 - git mv README.md hoge.md して git checkout README.md で回復できないことを確認
 
     $ git mv README.md hoge.md
-	$ git checkout README.md
-	$ git checkout HEAD README.md
+    $ git checkout README.md
+    $ git checkout HEAD README.md
 
 README.md という branch を作成してそこで同様の作業をするとどうなるか、も確認してみて下さい。最後にワークツリーの状態は戻しておくか commit を作成するかしておいて下さい。
 master branch に戻っておきましょう。
