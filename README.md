@@ -4,5 +4,5 @@
 
 資料は以下となります。
 
-- [Git Handson](./tutorial.md)
-- [Git でやり直す方法](./retry.md)
+- [Git Handson](tutorial.md)
+- [Git でやり直す方法](retry.md)
