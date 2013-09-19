@@ -37,6 +37,9 @@ conflict が発生した場合の対応については次の項目で確認し�
 
 ## GitDOJO
 
+資料は以下でした。
+- [Git 道場 技 本日の課題、テクニックの解説](https://speakerdeck.com/ogawa/git)
+
 branch するワークフローを使い、conflict が発生し易いファイルを使って、実際に conflict の解消の方法を試してみるのが GitDOJO です。
 
 ## Fork しない方式の Pull Request 演習
