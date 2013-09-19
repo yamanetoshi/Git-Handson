@@ -55,6 +55,16 @@ conflict が発生し易いファイルを使って、実際に conflict の解�
 
 feature branch を作成する、というワークフローを採用している場合にはこの演習のケースというのは基本的には発生しません。が、git の機能を知る、という意味では良い演習であると言えると思っています。
 
+## GitDOJO feature branch の Kata
+
+ローカルで feature branch を作成する、という方法を実際に試してみましょう。実習の要件としては以下です。
+- Numbers ファイルが編集対象となっているのは Git 道場と同様
+- ローカルで feature branch を作成して編集する
+- push の合図はしても良い
+- master にリモートを git fetch、git merge origin/master してから feature branch を merge
+- conflict をよしなに修正して push しましょう
+- 一人最低五回を目処
+
 ## Fork しない方式の Pull Request 演習
 
 Git リポジトリを複数名で共有して、Pull Request してレビュして一定以上の LGTM なコメントが付いた時点で merge する、という課題です。
