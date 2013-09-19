@@ -31,16 +31,29 @@ conflict が発生した場合の対応については次の項目で確認し�
 
 ## conflict の解消の方法の確認
 
-二種類の方法があります。
-- merge する方式
-- rebase する方式
+衝突が発生した場合、以下のような形に強制的に修正されます。
+
+    <<<<<<< HEAD:hoge.rb
+            p hoge
+    =======
+            p hoge
+            p fuga
+    >>>>>>> deadbeef:hoge.rb
+
+衝突している部分をきちんと辻褄が合うように修正して
+
+- git add
+- git commit
+
+することで解決できます。feature branch を作成して master に merge する方法を採っているのであれば commit が merge commit になってくれます。
 
 ## GitDOJO
 
-資料は以下でした。
+branch するワークフローを使い、conflict が発生し易いファイルを使って、実際に conflict の解消の方法を試してみるのが GitDOJO です。
+
 - [Git 道場 技 本日の課題、テクニックの解説](https://speakerdeck.com/ogawa/git)
 
-branch するワークフローを使い、conflict が発生し易いファイルを使って、実際に conflict の解消の方法を試してみるのが GitDOJO です。
+feature branch を作成する、というワークフローを採用している場合にはこの演習のケースというのは基本的には発生しません。が、git の機能を知る、という意味では良い演習であると言えると思っています。
 
 ## Fork しない方式の Pull Request 演習
 
@@ -48,7 +61,7 @@ Git リポジトリを複数名で共有して、Pull Request してレビュし
 
 ## Github Flow を試してみる
 
-参考文献参照してみて下さい。
+参考文献参照しつつ、トライしてみて頂ければと存じます。
 
 ## 参考文献
 
