@@ -1,8 +1,8 @@
-# ハンズオン材料の検討
+# なんにんかで作業するためのハンズオン
 
 ## はじめに
 
-9.28 開催予定の勉強会ですが、ハンズオン演習の材料を以下に列挙しておきます。やまねの方では超初心者向けのハンズオン (というかチュートリアル?) を担当しますが、次の段階の、という事で以下に列挙しておきますね。
+初心者編の次のステップとして、以下なテーマで手を動かしてみましょう。
 
 - branch して merge するワークフローの確認
 - conflict の解消の方法の確認
@@ -49,11 +49,21 @@ conflict が発生した場合の対応については次の項目で確認し�
 
 ## GitDOJO
 
-branch するワークフローを使い、conflict が発生し易いファイルを使って、実際に conflict の解消の方法を試してみるのが GitDOJO です。
+conflict が発生し易いファイルを使って、実際に conflict の解消の方法を試してみるのが GitDOJO です。
 
 - [Git 道場 技 本日の課題、テクニックの解説](https://speakerdeck.com/ogawa/git)
 
 feature branch を作成する、というワークフローを採用している場合にはこの演習のケースというのは基本的には発生しません。が、git の機能を知る、という意味では良い演習であると言えると思っています。
+
+## GitDOJO feature branch の Kata
+
+ローカルで feature branch を作成する、という方法を実際に試してみましょう。実習の要件としては以下です。
+- Numbers ファイルが編集対象となっているのは Git 道場と同様
+- ローカルで feature branch を作成して編集する
+- push の合図はしても良い
+- master にリモートを git fetch、git merge origin/master してから feature branch を merge
+- conflict をよしなに修正して push しましょう
+- 一人最低五回を目処
 
 ## Fork しない方式の Pull Request 演習
 
@@ -61,7 +71,7 @@ Git リポジトリを複数名で共有して、Pull Request してレビュし
 
 ## Github Flow を試してみる
 
-参考文献参照しつつ、トライしてみて頂ければと存じます。
+Github Flow とは何か、を確認しつつ勉強会への参加ログを纏める形で Github Flow を体験してみましょう。
 
 ## 参考文献
 
