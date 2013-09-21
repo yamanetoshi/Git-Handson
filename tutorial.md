@@ -759,3 +759,4 @@ git branch で確認してみましょう。
 
 - 入門 Git 秀和システム 濱野 純
 - Github 実践入門 技術評論社 @hirocaster
+ - http://github-book.doorkeeper.jp/
