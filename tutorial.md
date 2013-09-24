@@ -29,7 +29,7 @@ Git に関する基本的な操作方法を Hands-on 形式で学んでいきま
 
 ## 事前確認
 
-正しく環境設定ができているかどうかを確認しておいて下さい。コマンドは git config -l です。
+正しく環境設定ができているかどうかを確認しておいて下さい。コマンドは `git config -l` です。
 
     $  git config -l
     user.name=YAMANE Toshiaki
@@ -75,7 +75,7 @@ Git で管理されている情報はそれ専用のオブジェクトとして�
 
 ## リポジトリの状態
 
-状態を確認するためのコマンドとして git status というコマンドがあります。リポジトリを作成したばかりであれば以下のような出力となるはずです。
+状態を確認するためのコマンドとして `git status` というコマンドがあります。リポジトリを作成したばかりであれば以下のような出力となるはずです。
 
     $ git status
     # On branch master
@@ -117,18 +117,18 @@ Git で管理されている情報はそれ専用のオブジェクトとして�
     #       new file:   README.md
     #
 
-README.md を git add コマンドでインデクスに登録 (ステージング) したことにより、状態が変わっていることが分かります。Changes to be committed として列挙される形になりました。インデクスに登録されたことにより、commit でリポジトリに登録する対象とされた訳です。
+README.md を `git add` コマンドでインデクスに登録 (ステージング) したことにより、状態が変わっていることが分かります。Changes to be committed として列挙される形になりました。インデクスに登録されたことにより、commit でリポジトリに登録する対象とされた訳です。
 
 ## 歴史の記録
 
-インデクスに登録 (ステージング) されたファイル (達) を実際にリポジトリの歴史として記録するためのコマンドとして git commit というコマンドが用意されています。実行してみましょう。
+インデクスに登録 (ステージング) されたファイル (達) を実際にリポジトリの歴史として記録するためのコマンドとして `git commit` というコマンドが用意されています。実行してみましょう。
 
     $ git commit -m 'Initial commit'
     [master (root-commit) bb4da8e] Initial commit
      0 files changed
      create mode 100644 README.md
 
-git commit に指定している -m というオプションは commit log をコマンドで指定するためのものです。この Tutorial では簡易な commit log を歴史に記録する形を取っていますが、実際に使っていく場合にはこれが非常に大切な情報になりますので、色々な作法に従って記録をするようにした方が良いでしょう。
+`git commit` に指定している -m というオプションは commit log をコマンドで指定するためのものです。この Tutorial では簡易な commit log を歴史に記録する形を取っていますが、実際に使っていく場合にはこれが非常に大切な情報になりますので、色々な作法に従って記録をするようにした方が良いでしょう。
 
 ちなみに -m オプションを省略するとデフォルトでは vi が起動し、以下な表示になります。
 
@@ -165,7 +165,7 @@ commit log の書き方については Linux Kernel における作法を筆頭�
 
 ## commit log の確認
 
-歴史とそこに記録された commit log を確認するためのコマンドが git log です。早速確認してみましょう。
+歴史とそこに記録された commit log を確認するためのコマンドが `git log` です。早速確認してみましょう。
 
     $ git log
     commit bb4da8eecdd143c845c68edac7bc47269a48799d
@@ -187,7 +187,7 @@ commit log の書き方については Linux Kernel における作法を筆頭�
 
 ## 変更差分の確認
 
-git diff コマンドによって変更差分の確認が可能です。とりあえず README.md の中身が空ではいけませんので内容を追加します。
+`git diff` コマンドによって変更差分の確認が可能です。とりあえず README.md の中身が空ではいけませんので内容を追加します。
 
     $ echo '# Git Tutorial' >README.md
     $ cat README.md
@@ -204,7 +204,7 @@ git diff コマンドによって変更差分の確認が可能です。とり�
     #       modified:   README.md
     #    no changes added to commit (use "git add" and/or "git commit -a")
 
-git diff のみ、の場合はステージングされていないワークツリーの変更差分が出力されます。
+`git diff` のみ、の場合はステージングされていないワークツリーの変更差分が出力されます。
 
     $ git diff
     diff --git a/README.md b/README.md
@@ -214,7 +214,7 @@ git diff のみ、の場合はステージングされていないワークツ�
     @@ -0,0 +1 @@
     +# Git Tutorial
 
-では git add で変更を全てインデクスに登録 (ステージング) してみましょう。
+では `git add` で変更を全てインデクスに登録 (ステージング) してみましょう。
 
     $ git add README.md
 
@@ -228,12 +228,12 @@ git diff のみ、の場合はステージングされていないワークツ�
     #       modified:   README.md
     #
 
-インデクスに登録されたことが分かります。では git diff を確認してみます。
+インデクスに登録されたことが分かります。では `git diff` を確認してみます。
 
     $ git diff
     $
 
-git diff はステージングされていないワークツリーの変更差分の出力、でしたので何も出力されないのは当然ですね。インデクスと最新 commit の差分を出力するためのオプションも用意されています。
+`git diff` はステージングされていないワークツリーの変更差分の出力、でしたので何も出力されないのは当然ですね。インデクスと最新 commit の差分を出力するためのオプションも用意されています。
 
     $ git diff --cached
     diff --git a/README.md b/README.md
@@ -259,7 +259,7 @@ git diff はステージングされていないワークツリーの変更差�
     master 6104d27] Add Title
      1 file changed, 1 insertion(+)
 
-諸々の状態を確認してみましょう。まず git log から。
+諸々の状態を確認してみましょう。まず `git log` から。
 
     $ git log
     commit 6104d273c936740836d38f1621e1ab6e1de4d72d
@@ -279,13 +279,13 @@ git diff はステージングされていないワークツリーの変更差�
     # On branch master
     nothing to commit (working directory clean)
 
-commit を作成したばかりの状態とい事が分かります。git diff なども確認してみて下さい。
+commit を作成したばかりの状態とい事が分かります。`git diff` なども確認してみて下さい。
 
 ## branch
 
 Git の特徴として branch の作成や branch で変更された修正を merge することが非常に簡単である事が挙げられます。作業の方法として branch を作成して変更を盛り込んだ上で試験などを行ない、master branch に merge をしていく形が一般的です。また、branch で行なった変更は他の branch に影響しません。こうした仕組みを上手に活用できれば効率的に同時並行した開発を複数の人や場所で行なっていくことが可能となります。ここではこの branch に関する操作の方法を試していきます。
 
-branch の一覧の表示と現在作業中の branch を確認するためのコマンドとして git branch というコマンドがあります。確認してみましょう。
+branch の一覧の表示と現在作業中の branch を確認するためのコマンドとして `git branch` というコマンドがあります。確認してみましょう。
 
     $ git branch
     * master
@@ -301,7 +301,7 @@ branch の一覧の表示と現在作業中の branch を確認するための�
     * feature-A
       master
 
-状態が変わっているのが分かりますね。この状態で git add や git commit などで歴史をすすめると feature-A という branch に対して記録されます。逆に言うと master の歴史はそのままとなります。README.md に一行追加してみましょう。
+状態が変わっているのが分かりますね。この状態で `git add` や `git commit` などで歴史をすすめると feature-A という branch に対して記録されます。逆に言うと master の歴史はそのままとなります。README.md に一行追加してみましょう。
 
     $ vi README.md
     $ cat README.md
@@ -316,7 +316,7 @@ branch の一覧の表示と現在作業中の branch を確認するための�
     [feature-A 720c978] Add feature-A
      1 file changed, 2 insertions(+)
 
-この修正が master branch には一切影響していないことを確認してみましょう。まず、master branch に移動します。そういえば branch の移動の方法について紹介するのはこれが始めてですね。git checkout というコマンドを使います。
+この修正が master branch には一切影響していないことを確認してみましょう。まず、master branch に移動します。そういえば branch の移動の方法について紹介するのはこれが始めてですね。`git checkout` というコマンドを使います。
 
     $ git checkout master
     Switched to branch 'master'
@@ -493,7 +493,7 @@ commit を作ってしまいます。状態など、確認しながらすすめ�
                    \     /
     Fix-B           o----
 
-まず feature-A を merge した状態を復元します。git reflog というコマンドの出力を確認してみて下さい。
+まず feature-A を merge した状態を復元します。`git reflog` というコマンドの出力を確認してみて下さい。
 
     $ git reflog
     0bd9388 HEAD@{0}: commit: Fix B
@@ -508,7 +508,7 @@ commit を作ってしまいます。状態など、確認しながらすすめ�
     6104d27 HEAD@{9}: commit: Add Title
     bb4da8e HEAD@{10}: commit (initial): Initial commit
 
-ここに出力されている hash key と git reset --hard コマンドで復元が可能です。この記録は git gc しない限り有効です。早速復元してみます。
+ここに出力されている hash key と `git reset --hard` コマンドで復元が可能です。この記録は `git gc` しない限り有効です。早速復元してみます。
 
     $ git checkout master
     $ git reset --hard 439e637
@@ -559,7 +559,7 @@ HEAD の状態が <<<<<<< HEAD から ======= までで Fix-B の状態が =====
 
 ## commit log の修正
 
-直前の commit log を修正するには git commit --amend コマンドを使います。先程の操作で Fix conflict としていましたが、本来は Fix-B の merge です。修正してみます。
+直前の commit log を修正するには `git commit --amend` コマンドを使います。先程の操作で Fix conflict としていましたが、本来は Fix-B の merge です。修正してみます。
 
     $ git commit --amend
 
@@ -579,7 +579,7 @@ commit log の部分を Merge branch 'Fix-B' と修正してエディタを終�
 
     [master a2692bb] Merge branch 'Fix-B'
 
-git log で確認をしておいて下さい。
+`git log` で確認をしておいて下さい。
 
 ## 歴史の改変
 
@@ -670,7 +670,7 @@ Fix typo な commit の行の先頭を fixup 扱いとします。右側に記�
      1 file changed, 1 insertion(+)
     Successfully rebased and updated refs/heads/feature-C.
 
-git log や README.md の内容も確認しておいて下さい。問題無いようであればこの branch も master に merge しておきましょう。
+`git log` や README.md の内容も確認しておいて下さい。問題無いようであればこの branch も master に merge しておきましょう。
 
     $ git checkout master
     Switched to branch 'master'
@@ -738,7 +738,7 @@ push した branch の取得方法です。別場所に作業用のディレク�
     Receiving objects: 100% (20/20), done.
     Resolving deltas: 100% (3/3), done.
 
-git branch で確認してみましょう。
+`git branch` で確認してみましょう。
 
     $ git branch -a
     * master
@@ -746,7 +746,7 @@ git branch で確認してみましょう。
       remotes/origin/feature-D
       remotes/origin/master
 
-取得だけであれば単純に git checkout で問題ありません。
+取得だけであれば単純に `git checkout` で問題ありません。
 
     $ git checkout feature-D
     Switched to a new branch 'feature-D'
