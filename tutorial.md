@@ -37,8 +37,8 @@ Git に関する基本的な操作方法を Hands-on 形式で学んでいきま
 
 最低限、上記二点は確認されていること、が前提となります。未設定の場合には以下の方法で登録をしておいて下さい。
 
-    $ git config --global --add user.name <あなたの名前 (ascii で)>
-    $ git config --global --add user.email <あなたの email address>
+    $ git config --global --add user.name "<あなたの名前 (ascii で)>"
+    $ git config --global --add user.email "<あなたの email address>"
 
 ## リポジトリの初期化
 
