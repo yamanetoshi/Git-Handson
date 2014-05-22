@@ -280,7 +280,7 @@ commit log の書き方については Linux Kernel における作法を筆頭�
     # On branch master
     nothing to commit (working directory clean)
 
-commit を作成したばかりの状態とい事が分かります。`git diff` なども確認してみて下さい。
+commit を作成したばかりの状態という事が分かります。`git diff` なども確認してみて下さい。
 
 ## branch
 
